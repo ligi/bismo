@@ -3,6 +3,7 @@ package org.bismo.tv;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings.Secure;
@@ -12,6 +13,14 @@ import android.widget.ProgressBar;
 public class BetweenScreenActivity extends BaseActivity {
     
 	public final static int PAUSE_TIME=30000; // in ms
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		
+		super.onActivityResult(requestCode, resultCode, data);
+		pause_start=System.currentTimeMillis();
+		new Thread(new ProgressUpdaterThread()).start();
+	}
+
 	private ProgressBar progress;
 	private long pause_start;
 	private Handler hndl;
@@ -51,11 +60,16 @@ public class BetweenScreenActivity extends BaseActivity {
 				} catch (InterruptedException e) {		}
 				
 				hndl.post(new ProgressUpdater());
-			}	
+			}
+			startNext();		
 		}
-
 		
 	}
+	
+	public void startNext() {
+		this.startActivityForResult(new Intent("org.twitterwall.show"), 0);
+	}
+	
 	class ProgressUpdater implements Runnable {
 		@Override
 		public void run() {
