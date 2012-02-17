@@ -3,7 +3,6 @@ Preface
 
 This is just a README at the moment as the implementation will take place at the [Global Android Dev Camp](https://plus.google.com/102283760516132651199) hackathon
 
-
 What it is in a single sentence
 ===============================
 
