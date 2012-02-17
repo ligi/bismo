@@ -6,16 +6,49 @@
 
     
     <TextView
+        android:id="@+id/title_tv"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="BISMO" />
-    
+        android:textSize="64sp"
+        android:text="BISMO 0.1" />
+   
+     <TextView
+        android:id="@+id/availshows"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="32sp"
+        android:text="Available shows:\n
+        - TwitterWall\n
+        - Gobandroid\n
+        - EyeEmTV\n"
+        android:layout_below="@id/title_tv" />
+     
+     <TextView
+        android:id="@+id/nextshow"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="32sp"
+        android:text="Next Show:\n
+        - Gobandroid"
+        android:layout_below="@+id/availshows" />
+     
+     <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="32sp"
+        android:text="Disclaimer: VERY EARLY ALPHA!\nDO NOT SCAN BARCODE!!\nVOTING NOT WORKING YET!!!"
+        android:layout_below="@id/nextshow" />
+          
     <ImageView 
 		android:id="@+id/barcode_img"
         android:layout_width="@dimen/barcode_size"
         android:layout_height="@dimen/barcode_size"
+    	android:layout_alignParentRight="true"
+    	android:paddingRight="20dp"
+    	android:paddingTop="20dp"
         />
 
+    
     <ProgressBar 
 		android:id="@+id/progress_bar"
 		style="?android:attr/progressBarStyleHorizontal"
