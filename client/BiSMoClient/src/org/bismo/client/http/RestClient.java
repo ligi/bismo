@@ -57,23 +57,11 @@ public class RestClient {
 		this.url = url;
 		params = new ArrayList<NameValuePair>();
 		headers = new ArrayList<NameValuePair>();
-//		AddHeader("Accept-Encoding", "gzip");
+		AddHeader("Accept-Encoding", "gzip");
 	}
-	
-	public RestClient(String url, String access_token) {
-		this(url);
-		AddHeader("Authorization", "Bearer "+access_token);
-	}	
 
 	public RestClient(ApplicationController ac, String url) throws Exception{
 		this(url);
-		if(!ConnectionChecker.checkConnection(ac)){
-			throw new Exception();
-		}
-	}	
-	
-	public RestClient(ApplicationController ac, String url, String access_token) throws Exception{
-		this(url,access_token);
 		if(!ConnectionChecker.checkConnection(ac)){
 			throw new Exception();
 		}
