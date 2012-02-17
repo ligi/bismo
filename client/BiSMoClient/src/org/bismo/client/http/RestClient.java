@@ -1,7 +1,6 @@
 package org.bismo.client.http;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -22,9 +21,6 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.entity.mime.MultipartEntity;
-import org.apache.http.entity.mime.content.FileBody;
-import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
@@ -144,209 +140,9 @@ public class RestClient {
 			}			
 		}
 	}
-	public String createUser(String email, String password, String fullname, String filename){
-		String result = "";
-		try {
-			HttpClient httpclient = new DefaultHttpClient();
-			HttpPost request = new HttpPost(url);
-
-			for (NameValuePair h : headers) {
-				request.addHeader(h.getName(), h.getValue());
-			}
-			
-			MultipartEntity entity = new MultipartEntity();
-			
-			for (NameValuePair p : params) {
-				entity.addPart(p.getName(),new StringBody( p.getValue()));
-			}
-			
-			if(fullname!=null){
-				entity.addPart("fullname", new StringBody(fullname));
-			}
-			if(email!=null){
-				entity.addPart("username", new StringBody(email));
-			}
-			if(password!=null){
-				entity.addPart("password", new StringBody(password));
-			}
-			if(filename!=null){
-				File f = new File(filename);
-				entity.addPart("photo", new FileBody(f));
-			}
-			
-			request.setEntity(entity);
-			// executeRequest(request, url);
-
-			HttpResponse response;
-			
-			response = httpclient.execute(request);
-			responseCode = response.getStatusLine().getStatusCode();
-			message = response.getStatusLine().getReasonPhrase();
-			
-			if (entity != null) {
-				entity.consumeContent();
-				HttpEntity resEntity = response.getEntity();
-				InputStream instream = resEntity.getContent();
-				Header contentEncoding = response
-						.getFirstHeader("Content-Encoding");
-				if (contentEncoding != null
-						&& contentEncoding.getValue().equalsIgnoreCase("gzip")) {
-					instream = new GZIPInputStream(instream);
-				}
-				result = convertStreamToString(instream);
-				instream.close();
-			}
-		} catch (Exception ex) {
-			return null;
-		}
-		return result;		
-	}
 	
-	public String editUser(String email, String password, String fullname, String filename, String nickname, String description,boolean emailNotifications){
-		String result = "";
-		try {
-			HttpClient httpclient = new DefaultHttpClient();
-			HttpPost request = new HttpPost(url);
 
-			for (NameValuePair h : headers) {
-				request.addHeader(h.getName(), h.getValue());
-			}
-			MultipartEntity entity = new MultipartEntity();
-			if(fullname!=null){
-				entity.addPart("fullname", new StringBody(fullname));
-			}
-			if(nickname!=null){
-				entity.addPart("nickname", new StringBody(nickname));
-			}
-			if(email!=null){
-				entity.addPart("username", new StringBody(email));
-			}			
-			if(description!=null){
-				entity.addPart("description", new StringBody(description));
-			}
-			if(password!=null){
-				entity.addPart("password", new StringBody(password));
-			}
-			
-			if (emailNotifications) {
-				entity.addPart("emailNotifications", new StringBody("true"));
-			}else{
-				entity.addPart("emailNotifications", new StringBody("false"));
-			}
-			
-			if(filename!=null){
-				File f = new File(filename);
-				entity.addPart("photo", new FileBody(f));
-			}
-			
-			request.setEntity(entity);
-			HttpResponse response;
-
-			response = httpclient.execute(request);
-			responseCode = response.getStatusLine().getStatusCode();
-			message = response.getStatusLine().getReasonPhrase();
-			
-			if (entity != null) {
-				entity.consumeContent();
-				HttpEntity resEntity = response.getEntity();
-				InputStream instream = resEntity.getContent();
-				Header contentEncoding = response
-						.getFirstHeader("Content-Encoding");
-				if (contentEncoding != null
-						&& contentEncoding.getValue().equalsIgnoreCase("gzip")) {
-					instream = new GZIPInputStream(instream);
-				}
-				result = convertStreamToString(instream);
-				instream.close();
-			}
-		} catch (Exception ex) {
-			return null;
-		}
-		return result;		
-	}
-	public String uploadFile(String filename, String title, String description,
-			boolean flickr, boolean facebook, boolean twitter) throws Exception {
-		String result = "";
-		try {
-			HttpClient httpclient = new DefaultHttpClient();
-			HttpPost request = new HttpPost(url);
-			File f = new File(filename);
-
-			MultipartEntity entity = new MultipartEntity();
-			entity.addPart("photo[title]", new StringBody(title));
-			entity.addPart("photo[description]", new StringBody(description));
-			if (flickr) {
-				entity
-						.addPart("photo[share][flickr]", new StringBody(
-								"flickr"));
-			}
-			if (facebook) {
-				entity.addPart("photo[share][facebook]", new StringBody(
-						"facebook"));
-			}
-			if (twitter) {
-				entity.addPart("photo[share][twitter]", new StringBody(
-						"twitter"));
-			}
-			entity.addPart("photo[filename]", new FileBody(f));
-			request.setEntity(entity);
-			// executeRequest(request, url);
-
-			HttpResponse response;
-
-			response = httpclient.execute(request);
-			responseCode = response.getStatusLine().getStatusCode();
-			message = response.getStatusLine().getReasonPhrase();
-
-			if (entity != null) {
-				entity.consumeContent();
-				HttpEntity resEntity = response.getEntity();
-				InputStream instream = resEntity.getContent();
-				Header contentEncoding = response
-						.getFirstHeader("Content-Encoding");
-				if (contentEncoding != null
-						&& contentEncoding.getValue().equalsIgnoreCase("gzip")) {
-					instream = new GZIPInputStream(instream);
-				}
-				result = convertStreamToString(instream);
-				instream.close();
-			}
-		} catch (Exception ex) {
-			return null;
-		}
-		return result;
-	}
-
-	public String prepareUpload(String filename) throws Exception {
-		String result = "";
-		try {
-			HttpClient httpclient = new DefaultHttpClient();
-			HttpPost request = new HttpPost(url);
-			File f = new File(filename);
-			MultipartEntity entity = new MultipartEntity();
-			entity.addPart("photo[filename]", new FileBody(f));
-			request.setEntity(entity);
-			HttpResponse response;
-			response = httpclient.execute(request);
-			if (entity != null) {
-				entity.consumeContent();
-				HttpEntity resEntity = response.getEntity();
-				InputStream instream = resEntity.getContent();
-				Header contentEncoding = response
-						.getFirstHeader("Content-Encoding");
-				if (contentEncoding != null
-						&& contentEncoding.getValue().equalsIgnoreCase("gzip")) {
-					instream = new GZIPInputStream(instream);
-				}
-				result = convertStreamToString(instream);
-				instream.close();
-			}
-		} catch (Exception ex) {
-			return null;			
-		}
-		return result;
-	}
-
+	
 	private void executeRequest(HttpUriRequest request, String url) {
 		HttpClient client = new DefaultHttpClient();
 
