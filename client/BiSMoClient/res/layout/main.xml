@@ -2,11 +2,31 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical" 
+    android:gravity="center">
 
-    <TextView
-        android:layout_width="fill_parent"
+    <Button 
+        android:id="@+id/useExistingTV"
         android:layout_height="wrap_content"
-        android:text="@string/hello" />
-
+        android:layout_width="wrap_content"
+        android:text="Use last known GoogleTV"
+        android:onClick="onClick"
+        android:visibility="invisible"
+	/>
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:text="Scan the BiSMo QR-Code from the Google TV to vote your favorite show!" />
+    
+    <Button 
+        android:id="@+id/openQRCode"
+        android:layout_height="150dp"
+        android:layout_width="150dp"
+        android:background="@drawable/qr_code_logo"
+        android:layout_marginTop="20dp"
+        android:onClick="onClick"
+	/>
+    
 </LinearLayout>

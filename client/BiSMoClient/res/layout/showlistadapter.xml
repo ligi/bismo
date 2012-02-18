@@ -26,4 +26,11 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         />
+    <TextView 
+        android:id="@+id/showDetail"
+        android:textSize="14sp"
+        android:layout_below="@id/vote"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        />
 </RelativeLayout>

@@ -20,6 +20,7 @@ public class ShowListAdapter extends ArrayAdapter<BiSMoShow> {
 	static class ViewHolder {
 		private TextView showTitle;
 		private TextView showTotalVotes;
+		private TextView showDetails;
 	}
 	
 	private LayoutInflater mInflater;
@@ -43,9 +44,11 @@ public class ShowListAdapter extends ArrayAdapter<BiSMoShow> {
 			holder = new ViewHolder();
 			holder.showTitle = (TextView)rowView.findViewById(R.id.showTitle);
 			holder.showTotalVotes = (TextView)rowView.findViewById(R.id.totalVotes);
+			holder.showDetails = (TextView)rowView.findViewById(R.id.showDetail);
 		} 
 		
 		holder.showTitle.setText(mShow.getShowTitle());
+		holder.showDetails.setText(mShow.getShowParam());
 		holder.showTotalVotes.setText("Actual Votes: "+mShow.getTotalVotes());
 		
 		return rowView;

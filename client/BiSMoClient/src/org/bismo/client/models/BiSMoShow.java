@@ -1,11 +1,20 @@
 package org.bismo.client.models;
 
-public class BiSMoShow {
+public class BiSMoShow implements Comparable<BiSMoShow>{
 	
 	private int tvId;
 	private String appId;
 	private int showId;
 	private String showTitle;
+	private String showParam;
+	public String getShowParam() {
+		return showParam;
+	}
+
+	public void setShowParam(String showParam) {
+		this.showParam = showParam;
+	}
+
 	private int totalVotes;
 	private int showDuration;
 	
@@ -55,6 +64,21 @@ public class BiSMoShow {
 
 	public void setShowDuration(int showDuration) {
 		this.showDuration = showDuration;
+	}
+
+	@Override
+	public int compareTo(BiSMoShow another) {
+		// TODO Auto-generated method stub
+		
+		if (getTotalVotes()<another.totalVotes) {
+			return 1;
+		}
+		
+		if (getTotalVotes()>another.totalVotes) {
+			return -1;
+		}
+		
+		return 0;
 	}
 	
 	
