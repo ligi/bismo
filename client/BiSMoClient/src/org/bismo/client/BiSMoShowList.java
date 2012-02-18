@@ -8,6 +8,7 @@ import org.bismo.client.tasks.GetShowsTask;
 import org.bismo.client.widgets.ShowListAdapter;
 import org.bismo.client.widgets.ShowListFragment;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.MenuItem;
@@ -29,6 +30,8 @@ public class BiSMoShowList extends  FragmentActivity{
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+		
 		setContentView(R.layout.showlist);
 		ac = (ApplicationController)getApplication();
 		getSupportActionBar().setTitle("BiSMo rocks!!!");

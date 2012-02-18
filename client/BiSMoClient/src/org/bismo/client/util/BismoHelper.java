@@ -5,6 +5,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class BismoHelper {
+	
+	public static final int QR_CODE_RESULT = 1;
+	
 	public static ArrayList<String> retrieveLinks(String text) {
         ArrayList<String> links = new ArrayList();
 

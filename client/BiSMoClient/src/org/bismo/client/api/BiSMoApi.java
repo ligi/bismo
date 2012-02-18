@@ -136,8 +136,6 @@ public class BiSMoApi {
 			client.AddParam("showName", "EyeEmTV");
 			client.AddParam("appId", "com.eyeem.tv.NOIF");
 			client.AddParam("showParameter", BismoHelper.retrieveLinks(url).get(0));
-			
-			
 		}else if(url.toLowerCase().endsWith(".sgf")){
 			//Gobandroid
 			client.AddParam("appId", "org.ligi.gobandroid.NOIF");
@@ -147,7 +145,14 @@ public class BiSMoApi {
 			client.AddParam("showName", "TwitterWall");
 			client.AddParam("appId", "org.twitterwall.show");
 		}else{
-			return null;
+			
+			if (BismoHelper.retrieveLinks(url).size() == 1) {
+				client.AddParam("appId", "org.NOIF.webview");
+				client.AddParam("showName", "WebView");
+				client.AddParam("showParameter", url);
+			}else{
+				return null;
+			}
 		}
 		
 		try {

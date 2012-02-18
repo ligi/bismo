@@ -11,5 +11,4 @@ public class ApplicationController extends Application{
 		SharedPreferences prefs = getSharedPreferences("bismo", MODE_PRIVATE);
 		return prefs.getString("tvId", "-1");
 	}
-
 }
