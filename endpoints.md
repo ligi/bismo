@@ -15,8 +15,11 @@ Client:
 * get next show
     * request /tv/{tvId}/nextShow
     * returns a JSONObject of a show
+    * if no shows available, returns "error"
+* find available apps for a tv
+    * request /tv/{tvId}/apps (GET)
+    * JSONObject with an array of apps called "apps"
 * remove vote (step 2)
-* find available apps for a tv (step 2)
 * suggest/add a new show for a tv (step 2)
 
 TV:
@@ -33,8 +36,8 @@ TV:
 * get next show
     * request: /tv/{tvId}/nextShow (GET)
     * response: returns a JSON object of the next show
-    
-* add apps to a tv (step 2)
+* add apps to a tv (POST)
+    * request: /tv/{tvId}/addApp (POST) params:	appId, appName, requiredParam
 
 * remove shows from a tv
 * remove apps from a tv
