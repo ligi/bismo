@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 public class BiSMoClientActivity extends Activity {
 	private ApplicationController ac;
+	public Exception mException = null;
 	
 	
 	/** Called when the activity is first created. */
@@ -40,7 +41,35 @@ public class BiSMoClientActivity extends Activity {
         if (ac.tvId != "-1") {
         	findViewById(R.id.useExistingTV).setVisibility(View.VISIBLE);
 		}
-        analyseIntent();
+        
+        SharedPreferences prefs = getSharedPreferences("bismo", MODE_PRIVATE);
+		Editor editor = prefs.edit();
+		
+		String intentConent = null;
+		Uri data = getIntent().getData();
+		
+		boolean errorMessage = false; 
+		
+		 if (data != null) {
+		 intentConent = data.toString();
+		 
+		 	if (intentConent.contains("http://bismoapp.appspot.com/tv/")) {
+		 		intentConent = intentConent.replace("http://bismoapp.appspot.com/tv/", "");
+		 		if (intentConent != null) {
+		 			editor.putString("tvId", intentConent).commit();
+		 			ac.tvId = intentConent;
+		 			new RegisterTask().execute();
+		 		}
+		 	}else{
+		 		errorMessage = true;
+		 	}
+		 }else if(getIntent().getStringExtra(Intent.EXTRA_TEXT) != null){
+			 new AddShowTask(ac,this).execute(getIntent().getStringExtra(Intent.EXTRA_TEXT));
+		 }
+		 
+		 if (errorMessage) {
+			 Toast.makeText(getApplicationContext(), "Sorry, but we couldn't use your QR-Code. Watch out for more plugins!", Toast.LENGTH_LONG).show();
+		}
     }
     
     @Override
@@ -50,7 +79,7 @@ public class BiSMoClientActivity extends Activity {
     	
     	switch (requestCode) {
 		case BismoHelper.QR_CODE_RESULT:
-			analyseIntent();
+			analyseIntent(intent);
 			
 			break;
 
@@ -59,52 +88,22 @@ public class BiSMoClientActivity extends Activity {
 		}
     }
 
-	private void analyseIntent() {
-//		SharedPreferences prefs = getSharedPreferences("bismo", MODE_PRIVATE);
-//        Editor editor = prefs.edit();
-//        editor.putString("uuid", ac.clientId).commit();
-//        
-//        String intentConent = null;
-//        Uri data = getIntent().getData();
-//        
-//        if (data != null) {
-//        	intentConent = data.toString();
-//        	
-//        	if (intentConent.contains("http://bismoapp.appspot.com/tv/")) {
-//        		intentConent = intentConent.replace("http://bismoapp.appspot.com/tv/", "");
-//            	if (intentConent != null) {
-//            		editor.putString("tvId", intentConent).commit();
-//            		ac.tvId = intentConent;
-//            		new RegisterTask().execute();
-//        		}
-//			}
-//		}else if(getIntent().getStringExtra(Intent.EXTRA_TEXT) != null){
-//			new AddShowTask(ac).execute(getIntent().getStringExtra(Intent.EXTRA_TEXT));
-//		}
+	private void analyseIntent(Intent intent) {
 		SharedPreferences prefs = getSharedPreferences("bismo", MODE_PRIVATE);
 		Editor editor = prefs.edit();
-		String intentConent = null;
-		 Uri data = getIntent().getData();
-		    
-		    if (data != null) {
-		    	intentConent = data.toString();
-		    	
-		    	if (intentConent.contains("http://bismoapp.appspot.com/tv/")) {
-		    		intentConent = intentConent.replace("http://bismoapp.appspot.com/tv/", "");
-		        	if (intentConent != null) {
-		        		editor.putString("tvId", intentConent).commit();
-		        		ac.tvId = intentConent;
-		        		
-		        		new RegisterTask().execute();
-		    		}
-				}else{
-					Toast.makeText(getApplicationContext(), "Sorry, but we couldn't use your QR-Code. Watch out for more plugins!", Toast.LENGTH_LONG).show();
-				}
-			}else if(getIntent().getStringExtra(Intent.EXTRA_TEXT) != null){
-				new AddShowTask(ac,this).execute(getIntent().getStringExtra(Intent.EXTRA_TEXT));
-			}else{
-//				Toast.makeText(getApplicationContext(), "Sorry, but we couldn't use your QR-Code. Watch out for more plugins!", Toast.LENGTH_LONG).show();
-			}
+		
+		Uri data = Uri.parse(intent.getStringExtra("SCAN_RESULT"));
+		
+		if (data == null || (!data.toString().contains("http://bismoapp.appspot.com/tv/"))) {
+			Toast.makeText(getApplicationContext(), "Sorry, but we couldn't use your QR-Code. Watch out for more plugins!", Toast.LENGTH_LONG).show();	
+		}else{
+			String intentConent = data.toString().replace("http://bismoapp.appspot.com/tv/", "");
+        	if (intentConent != null) {
+        		editor.putString("tvId", intentConent).commit();
+        		ac.tvId = intentConent;
+        		new RegisterTask().execute();
+    		}
+		}
 	}
     
     
@@ -130,24 +129,35 @@ public class BiSMoClientActivity extends Activity {
 		@Override
 		protected Boolean doInBackground(String... params) {
 			// TODO Auto-generated method stub
-			return BiSMoApi.registerTv(ac);
+			try{
+				return BiSMoApi.registerTv(ac);
+			}catch (Exception e) {
+				mException = e;
+			}
+			return null;
+			
 		}
 		
 		@Override
 		protected void onPostExecute(Boolean result) {
 			// TODO Auto-generated method stub
-			if (result) {
-				Intent showList = new Intent(getApplicationContext(), BiSMoShowList.class);
-	    		startActivity(showList);
+			if (mException!=null) {
+				//TODO:handle Exception
+				mException = null;
+			}else{
+				if (result) {
+					Intent showList = new Intent(getApplicationContext(), BiSMoShowList.class);
+		    		startActivity(showList);
+				}
 			}
 		}
     }
     
     public void userMessage(BiSMoShow show){
-    	if (show == null) {
-    		Toast.makeText(getApplicationContext(), "Sorry, but we couldn't use your QR-Code. Watch out for more plugins!", Toast.LENGTH_LONG).show();
-		}else{
-			Toast.makeText(getApplicationContext(), "The show "+show.getShowTitle()+" was successfully added.", Toast.LENGTH_LONG).show();
-		}
+			if (show == null) {
+	    		Toast.makeText(getApplicationContext(), "Sorry, but we couldn't use your QR-Code. Watch out for more plugins!", Toast.LENGTH_LONG).show();
+			}else{
+				Toast.makeText(getApplicationContext(), "The show "+show.getShowTitle()+" was successfully added.", Toast.LENGTH_LONG).show();
+			}
     }
 }
