@@ -3,9 +3,11 @@ package org.bismo.client.widgets;
 import java.util.ArrayList;
 
 import org.bismo.client.ApplicationController;
+import org.bismo.client.BiSMoShowList;
 import org.bismo.client.R;
-import org.bismo.client.api.BiSMoApi;
 import org.bismo.client.models.BiSMoShow;
+import org.bismo.client.tasks.GetNextShowTask;
+import org.bismo.client.tasks.VoteShowTask;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -17,6 +19,7 @@ import android.widget.TextView;
 
 public class ShowListAdapter extends ArrayAdapter<BiSMoShow> {
 	
+	private BiSMoShowList mActivity;
 	
 	static class ViewHolder {
 		private Button voteButton;
@@ -27,10 +30,11 @@ public class ShowListAdapter extends ArrayAdapter<BiSMoShow> {
 	private ApplicationController ac;
 
 	public ShowListAdapter(Context context, int resource,
-			int textViewResourceId, ArrayList<BiSMoShow> objects,LayoutInflater mInflater, ApplicationController ac) {
+			int textViewResourceId, ArrayList<BiSMoShow> objects,LayoutInflater mInflater, ApplicationController ac,BiSMoShowList activity) {
 		super(context, resource, textViewResourceId, objects);
 		this.mInflater = mInflater;
 		this.ac = ac;
+		this.mActivity = activity;
 	}
 	
 	@Override
@@ -54,7 +58,11 @@ public class ShowListAdapter extends ArrayAdapter<BiSMoShow> {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				BiSMoApi.voteShow(ac, mShow.getShowId());
+				VoteShowTask voteTask = new VoteShowTask(ac, ShowListAdapter.this);
+				voteTask.execute(mShow.getShowId());
+				
+				GetNextShowTask nextShowTask = new GetNextShowTask(ac, mActivity);
+				nextShowTask.execute();
 			}
 		});
 		return rowView;
