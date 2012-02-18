@@ -3,7 +3,6 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
-
     
     <TextView
         android:id="@+id/title_tv"
@@ -24,13 +23,21 @@
         android:layout_below="@id/title_tv" />
      
      <TextView
+        android:id="@+id/nextshow_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="32sp"
+        android:text="Nex Show:"
+        android:layout_below="@+id/availshows" />
+     
+     <TextView
         android:id="@+id/nextshow"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textSize="32sp"
-        android:text="Next Show:\n
-        - Gobandroid"
-        android:layout_below="@+id/availshows" />
+        android:paddingLeft="128dp"
+        android:text="Gobandroid"
+        android:layout_below="@+id/nextshow_title" />
      
      <TextView
         android:layout_width="fill_parent"

@@ -9,21 +9,63 @@ import android.os.Handler;
 import android.provider.Settings.Secure;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 public class BetweenScreenActivity extends BaseActivity {
     
 	public final static int PAUSE_TIME=30000; // in ms
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		
-		super.onActivityResult(requestCode, resultCode, data);
-		pause_start=System.currentTimeMillis();
-		new Thread(new ProgressUpdaterThread()).start();
-	}
-
+	
 	private ProgressBar progress;
 	private long pause_start;
 	private Handler hndl;
+	private TextView next_tv;
+	
+	class Show {
+		private String name;
+		private String intent_action;
+		private String param;
+
+		public Show(String name,String intent_action,String param) {
+			this.name=name;
+			this.intent_action=intent_action;
+			this.param=param;
+		}
+				
+		public String getName(){
+			return name;
+		}
+		
+		public String getIntentAction() {
+			return intent_action;
+		}
+
+		public String getParam() {
+			return param;
+		}
+	}
+	
+	
+	public Show[] shows = new Show[] {
+			new Show("GobanDroid ","org.ligi.gobandroid.NOIF",""),
+			new Show("EyeEmTV","com.eyeem.tv.NOIF",""),
+			new Show("TwitterWall","org.twitterwall.show","")
+	};
+	
+	private int act_show_pos=0;
+	private Show act_show;
+	
+	public void prepare_next() {
+		
+		act_show=shows[act_show_pos];
+		
+		next_tv.setText(act_show.getName());
+		
+		if (act_show_pos<shows.length-1)
+			act_show_pos++;
+		else
+			act_show_pos=0;
+		
+	}
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,6 +89,10 @@ public class BetweenScreenActivity extends BaseActivity {
         
         hndl=new Handler();
         
+        next_tv=(TextView)this.findViewById(R.id.nextshow);
+        
+        prepare_next();
+        
         new Thread(new ProgressUpdaterThread()).start();
 	}
 
@@ -67,7 +113,7 @@ public class BetweenScreenActivity extends BaseActivity {
 	}
 	
 	public void startNext() {
-		this.startActivityForResult(new Intent("org.twitterwall.show"), 0);
+		this.startActivityForResult(new Intent(act_show.getIntentAction()),0);
 	}
 	
 	class ProgressUpdater implements Runnable {
@@ -77,5 +123,13 @@ public class BetweenScreenActivity extends BaseActivity {
 		}
 	}
 	
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		pause_start=System.currentTimeMillis();
+		prepare_next();
+		new Thread(new ProgressUpdaterThread()).start();
+	}
     
 }
