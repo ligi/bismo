@@ -1,5 +1,7 @@
 package org.bismo.client;
 
+import org.bismo.client.api.BiSMoApi;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -38,12 +40,14 @@ public class BiSMoClientActivity extends Activity {
         		editor.putString("serverId", tvId);
         		ac.tvId = tvId;
         		
+        		BiSMoApi.registerTv(ac);
+        		
         		Intent showList = new Intent(getApplicationContext(), BiSMoShowList.class);
         		startActivity(showList);
     		}
 		}
         
-        Intent showList = new Intent(getApplicationContext(), BiSMoShowList.class);
-		startActivity(showList);
+//        Intent showList = new Intent(getApplicationContext(), BiSMoShowList.class);
+//		startActivity(showList);
     }
 }
