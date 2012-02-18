@@ -27,8 +27,13 @@ TV:
 * add shows to a tv
     * request: /show (POST) params: tvId, showName, appId, showDuration
     * returns a JSON object of a show
-* close voting    
+* close voting
+    * request: /tv/{tvId}/closeVoting (POST)
+    * response: returns a JSON object of the next show
 * get next show
+    * request: /tv/{tvId}/nextShow (GET)
+    * response: returns a JSON object of the next show
+    
 * add apps to a tv (step 2)
 
 * remove shows from a tv

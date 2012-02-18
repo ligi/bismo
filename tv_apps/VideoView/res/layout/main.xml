@@ -5,8 +5,8 @@
               android:layout_height="fill_parent"
         >
     <org.apache.android.media.MyVideoView android:id="@+id/surface_view"
-                 android:layout_width="fill_parent"
-                 android:layout_height="fill_parent"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
                  android:layout_gravity="center"
                  />
 </LinearLayout>
