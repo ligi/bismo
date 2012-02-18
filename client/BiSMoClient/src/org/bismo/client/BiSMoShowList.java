@@ -49,8 +49,8 @@ public class BiSMoShowList extends  FragmentActivity{
 		// TODO Auto-generated method stub
 		
 		switch (item.getItemId()) {
-		case R.id.menu_refresh:
-			
+			case R.id.menu_refresh:
+				
 			return true;
 
 		default:
