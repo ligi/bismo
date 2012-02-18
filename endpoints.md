@@ -4,6 +4,8 @@ endpoints:
 Client:
 -------
 * register a client with a tv
+    * request: /tv/{tvId}/client/{clientId} (POST)
+    * response: message,tvId,clientId
 * get available shows for a tv
 * vote for a particular show
 * get next show
@@ -14,8 +16,10 @@ Client:
 TV:
 ---
 * register a tv with the server
+    * request: /tv/{tvId} (POST)
+    * response: message,tvId
+* add shows to a tv (step 2 - step one: hard-coded, client_side)
 * add apps to a tv (step 2)
-* add shows to a tv (step 2 - step one: hard-coded)
 * get current voting status for available shows
 * close voting
 * remove shows from a tv

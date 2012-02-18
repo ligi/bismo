@@ -6,18 +6,22 @@ client:
 * device uuid
 * registered tv id
 
+apps:
+------
+* app id > webview
+* app name > WebView
+* -- way to specify what params are needed for a specific app?
+
 tvapps:
 -------
 * tv id
 * app id
-* app name
-* -- way to specify what params are needed for a specific app?
 
 shows:
 -------
-* tv id
-* app id
-* show id (ex: twitter hashtag, youtube video id, eyeem album id)
+* tv id > tv1
+* app id > webview
+* show id > www.flickr.com
 * show duration (time in minutes)
 
 voting:
