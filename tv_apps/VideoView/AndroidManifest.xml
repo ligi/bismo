@@ -18,6 +18,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	package="org.apache.android.media">
 	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 	<uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
 	
 	<application android:name="VideoViewApplication" android:label="VideoViewApplication">
@@ -32,5 +34,6 @@
 				<category android:name="android.intent.category.DEFAULT" />
 			</intent-filter>
 		</activity>
+		<activity android:name="IntroVideoActivity" android:label="Media/VideoView" android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
 	</application>
 </manifest>

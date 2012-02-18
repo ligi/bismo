@@ -19,7 +19,8 @@ Client:
 * find available apps for a tv
     * request /tv/{tvId}/apps (GET)
     * JSONObject with an array of apps called "apps"
-* suggest/add a new show for a tv (step 2)
+* suggest/add a new show for a tv
+	* see /show (POST)
 
 * remove vote (step 2) << vote up/down
 

@@ -16,7 +16,7 @@ import android.view.MenuInflater;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class BiSMoShowList extends  FragmentActivity{
+public class BiSMoShowList extends FragmentActivity{
 	ApplicationController ac;
 	ShowListAdapter mAdapter;
 	ListView showList;
