@@ -3,10 +3,20 @@ package org.bismo.client.models;
 public class BiSMoShow {
 	
 	private int tvId;
-	private int appId;
+	private String appId;
 	private int showId;
 	private String showTitle;
+	private int totalVotes;
+	private int showDuration;
 	
+	public int getTotalVotes() {
+		return totalVotes;
+	}
+
+	public void setTotalVotes(int totalVotes) {
+		this.totalVotes = totalVotes;
+	}
+
 	public String getShowTitle() {
 		return showTitle;
 	}
@@ -14,8 +24,6 @@ public class BiSMoShow {
 	public void setShowTitle(String showTitle) {
 		this.showTitle = showTitle;
 	}
-
-	private long showDuration;
 
 	public int getTvId() {
 		return tvId;
@@ -25,11 +33,11 @@ public class BiSMoShow {
 		this.tvId = tvId;
 	}
 
-	public int getAppId() {
+	public String getAppId() {
 		return appId;
 	}
 
-	public void setAppId(int appId) {
+	public void setAppId(String appId) {
 		this.appId = appId;
 	}
 
@@ -41,11 +49,11 @@ public class BiSMoShow {
 		this.showId = showId;
 	}
 
-	public long getShowDuration() {
+	public int getShowDuration() {
 		return showDuration;
 	}
 
-	public void setShowDuration(long showDuration) {
+	public void setShowDuration(int showDuration) {
 		this.showDuration = showDuration;
 	}
 	
