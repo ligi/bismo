@@ -11,6 +11,7 @@ public class GetNextShowTask extends AsyncTask<String, Void, BiSMoShow> {
 
 	private ApplicationController ac;
 	private BiSMoShowList mActivity;
+	private Exception mException;
 	
 	public GetNextShowTask(ApplicationController ac, BiSMoShowList activity) {
 		mActivity = activity;
@@ -20,15 +21,27 @@ public class GetNextShowTask extends AsyncTask<String, Void, BiSMoShow> {
 	@Override
 	protected BiSMoShow doInBackground(String... params) {
 		// TODO Auto-generated method stub
-		return BiSMoApi.getNextShow(ac);
+		try{
+			return BiSMoApi.getNextShow(ac);
+		}catch (Exception e) {
+			mException = e;
+			return null;
+		}
+		
+		
 	}
 	
 	@Override
 	protected void onPostExecute(BiSMoShow result) {
-		if (result!=null) {
-			mActivity.setNextShowTitle(result);
+		if (mException != null) {
+			//TODO:handle Exception
+			mException = null;
 		}else{
-			mActivity.setNextShowTitle(null);
+			if (result!=null) {
+				mActivity.setNextShowTitle(result);
+			}else{
+				mActivity.setNextShowTitle(null);
+			}
 		}
 	}
 }

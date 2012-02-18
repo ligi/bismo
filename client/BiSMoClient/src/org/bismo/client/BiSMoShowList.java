@@ -22,7 +22,7 @@ public class BiSMoShowList extends  FragmentActivity{
 	ListView showList;
 	public ArrayList<BiSMoShow> mShows;
 	public TextView nextShowTitle;
-	
+	public Exception mException=null;;
 	private ShowListFragment listFragment;
 	
 	
@@ -48,11 +48,11 @@ public class BiSMoShowList extends  FragmentActivity{
 	}
 	
 	public void setNextShowTitle(BiSMoShow show){
-		if (show!=null) {
-			this.nextShowTitle.setText("Actual show:"+show.getShowTitle()+" with "+show.getTotalVotes()+" total Votes");
-		}else{
-			this.nextShowTitle.setText("Vote your fovorite show!");
-		}
+			if (show!=null) {
+				this.nextShowTitle.setText("Actual show:"+show.getShowTitle()+" with "+show.getTotalVotes()+" total Votes");
+			}else{
+				this.nextShowTitle.setText("Vote your fovorite show!");
+			}
 	}
 	
 	@Override

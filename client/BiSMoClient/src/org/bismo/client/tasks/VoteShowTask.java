@@ -12,6 +12,7 @@ import android.os.AsyncTask;
 public class VoteShowTask extends AsyncTask<Integer, Void, ArrayList<BiSMoShow>> {
 		private ShowListFragment mFragment;
 		private ApplicationController ac;
+		private Exception mException;
 		
 		public VoteShowTask(ApplicationController ac, ShowListFragment fragment) {
 			// TODO Auto-generated constructor stub
@@ -22,13 +23,23 @@ public class VoteShowTask extends AsyncTask<Integer, Void, ArrayList<BiSMoShow>>
 		@Override
 		protected  ArrayList<BiSMoShow> doInBackground(Integer... params) {
 			// TODO Auto-generated method stub
-			return BiSMoApi.voteShow(ac, params[0].intValue());
+			try{
+				return BiSMoApi.voteShow(ac, params[0].intValue());
+			}catch (Exception e) {
+				mException = e;
+				return null;
+			}
 		}
 		
 		@Override
 		protected void onPostExecute( ArrayList<BiSMoShow> result) {
-			if (result!=null) {
-				mFragment.setShows(result);
+			if (mException != null) {
+				//TODO:handle Exception
+				mException = null;
+			}else{
+				if (result!=null) {
+					mFragment.setShows(result);
+				}
 			}
 		}
 	}

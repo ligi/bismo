@@ -12,11 +12,17 @@ import android.os.AsyncTask;
 public class GetShowsTask extends AsyncTask<String, Void, ArrayList<BiSMoShow>> {
 		private ShowListFragment fragment;
 		private ApplicationController ac;
+		private Exception mException;
 	
 		@Override
 		protected ArrayList<BiSMoShow> doInBackground(String... params) {
 			// TODO Auto-generated method stub
-			return BiSMoApi.getShows(ac);
+			try{
+				return BiSMoApi.getShows(ac);
+			}catch (Exception e) {
+				mException = e;
+				return null;
+			}
 		}
 		
 		public GetShowsTask(ShowListFragment fragment,ApplicationController ac) {
@@ -27,6 +33,11 @@ public class GetShowsTask extends AsyncTask<String, Void, ArrayList<BiSMoShow>> 
 		
 		@Override
 		protected void onPostExecute(ArrayList<BiSMoShow> result) {
-			fragment.setShows(result);
+			if (mException != null) {
+				mException = null;
+				//TODO:handle Exception
+			}else{
+				fragment.setShows(result);
+			}
 		}
 	}

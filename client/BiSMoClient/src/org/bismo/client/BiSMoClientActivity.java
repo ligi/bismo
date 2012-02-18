@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 public class BiSMoClientActivity extends Activity {
 	private ApplicationController ac;
+	public Exception mException = null;
 	
 	
 	/** Called when the activity is first created. */
@@ -128,24 +129,35 @@ public class BiSMoClientActivity extends Activity {
 		@Override
 		protected Boolean doInBackground(String... params) {
 			// TODO Auto-generated method stub
-			return BiSMoApi.registerTv(ac);
+			try{
+				return BiSMoApi.registerTv(ac);
+			}catch (Exception e) {
+				mException = e;
+			}
+			return null;
+			
 		}
 		
 		@Override
 		protected void onPostExecute(Boolean result) {
 			// TODO Auto-generated method stub
-			if (result) {
-				Intent showList = new Intent(getApplicationContext(), BiSMoShowList.class);
-	    		startActivity(showList);
+			if (mException!=null) {
+				//TODO:handle Exception
+				mException = null;
+			}else{
+				if (result) {
+					Intent showList = new Intent(getApplicationContext(), BiSMoShowList.class);
+		    		startActivity(showList);
+				}
 			}
 		}
     }
     
     public void userMessage(BiSMoShow show){
-    	if (show == null) {
-    		Toast.makeText(getApplicationContext(), "Sorry, but we couldn't use your QR-Code. Watch out for more plugins!", Toast.LENGTH_LONG).show();
-		}else{
-			Toast.makeText(getApplicationContext(), "The show "+show.getShowTitle()+" was successfully added.", Toast.LENGTH_LONG).show();
-		}
+			if (show == null) {
+	    		Toast.makeText(getApplicationContext(), "Sorry, but we couldn't use your QR-Code. Watch out for more plugins!", Toast.LENGTH_LONG).show();
+			}else{
+				Toast.makeText(getApplicationContext(), "The show "+show.getShowTitle()+" was successfully added.", Toast.LENGTH_LONG).show();
+			}
     }
 }
