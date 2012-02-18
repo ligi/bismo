@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import org.bismo.client.ApplicationController;
 import org.bismo.client.api.BiSMoApi;
 import org.bismo.client.models.BiSMoShow;
-import org.bismo.client.widgets.ShowListAdapter;
+import org.bismo.client.widgets.ShowListFragment;
 
 import android.os.AsyncTask;
 
 public class GetShowsTask extends AsyncTask<String, Void, ArrayList<BiSMoShow>> {
-		private ShowListAdapter mAdapter;
+		private ShowListFragment fragment;
 		private ApplicationController ac;
 	
 		@Override
@@ -19,19 +19,14 @@ public class GetShowsTask extends AsyncTask<String, Void, ArrayList<BiSMoShow>> 
 			return BiSMoApi.getShows(ac);
 		}
 		
-		public GetShowsTask(ShowListAdapter adapter,ApplicationController ac) {
+		public GetShowsTask(ShowListFragment fragment,ApplicationController ac) {
 			// TODO Auto-generated constructor stub
-			mAdapter = adapter;
+			this.fragment = fragment;
 			this.ac = ac;
 		}
 		
 		@Override
 		protected void onPostExecute(ArrayList<BiSMoShow> result) {
-			mAdapter.clear();
-			
-			for (BiSMoShow show: result) {
-					mAdapter.add(show);
-				}
-			mAdapter.notifyDataSetChanged();
+			fragment.setShows(result);
 		}
 	}

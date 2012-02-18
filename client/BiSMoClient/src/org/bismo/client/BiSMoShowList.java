@@ -2,12 +2,12 @@ package org.bismo.client;
 
 import java.util.ArrayList;
 
-import org.bismo.client.api.BiSMoApi;
 import org.bismo.client.models.BiSMoShow;
+import org.bismo.client.tasks.GetNextShowTask;
 import org.bismo.client.tasks.GetShowsTask;
 import org.bismo.client.widgets.ShowListAdapter;
+import org.bismo.client.widgets.ShowListFragment;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.MenuItem;
@@ -19,8 +19,10 @@ public class BiSMoShowList extends  FragmentActivity{
 	ApplicationController ac;
 	ShowListAdapter mAdapter;
 	ListView showList;
-	ArrayList<BiSMoShow> mShows;
+	public ArrayList<BiSMoShow> mShows;
 	public TextView nextShowTitle;
+	
+	private ShowListFragment listFragment;
 	
 	
 	@Override
@@ -29,30 +31,32 @@ public class BiSMoShowList extends  FragmentActivity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.showlist);
 		ac = (ApplicationController)getApplication();
-		this.showList = (ListView)findViewById(R.id.showList);
 		getSupportActionBar().setTitle("BiSMo rocks!!!");
 		nextShowTitle = (TextView)findViewById(R.id.nextShow);
 		
-		mAdapter = new ShowListAdapter(getApplicationContext(), R.layout.showlistadapter, R.id.title, new ArrayList<BiSMoShow>(), getLayoutInflater(), ac,this);
-		this.showList.setAdapter(mAdapter);
+		GetNextShowTask nextShowTask = new GetNextShowTask(ac, this);
+		nextShowTask.execute();
 		
-		GetShowsTask task = new GetShowsTask(mAdapter, ac);
+		listFragment = new ShowListFragment(ac);
+		this.getSupportFragmentManager().beginTransaction().add(R.id.fragment_container,listFragment).commit();
+		
+		GetShowsTask task = new GetShowsTask(listFragment, ac);
 		task.execute();
-		
-		new GetNextShowTask().execute();
 	}
 	
-	public void setNextShowTitle(String title){
-		this.nextShowTitle.setText("Next show: "+title);
+	public void setNextShowTitle(BiSMoShow show){
+		if (show!=null) {
+			this.nextShowTitle.setText("Actual show:"+show.getShowTitle()+" with "+show.getTotalVotes()+" total Votes");
+		}else{
+			this.nextShowTitle.setText("Vote your fovorite show!");
+		}
 	}
-	
 	
 	@Override
 	public boolean onCreateOptionsMenu(android.support.v4.view.Menu menu) {
 		// TODO Auto-generated method stub
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.show_menu, menu);
-		
 		return true;
 	}
 	
@@ -62,31 +66,23 @@ public class BiSMoShowList extends  FragmentActivity{
 		
 		switch (item.getItemId()) {
 			case R.id.menu_refresh:
-				
+				GetShowsTask getShowsTask = new GetShowsTask(listFragment, ac);
+				getShowsTask.execute();
+				GetNextShowTask nextShowTask = new GetNextShowTask(ac, this);
+				nextShowTask.execute();
 			return true;
 
 		default:
 			return true;
 		}
+	}
+	
+	public void startSpinner(){
 		
 	}
 	
-	
-	private class GetNextShowTask extends AsyncTask<String, Void, BiSMoShow> {
-
-		@Override
-		protected BiSMoShow doInBackground(String... params) {
-			// TODO Auto-generated method stub
-			return BiSMoApi.getNextShow(ac);
-		}
+	public void stopSpinner(){
 		
-		@Override
-		protected void onPostExecute(BiSMoShow result) {
-			if (result != null) {
-				nextShowTitle.setText("Next Show: "+result.getShowTitle());
-			}
-		}
 	}
-	
 	
 }

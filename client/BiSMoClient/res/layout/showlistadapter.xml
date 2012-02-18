@@ -3,27 +3,26 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:padding="5dp">
-    <Button 
+    <ImageView 
         android:id="@+id/vote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="onClick"
         android:background="@drawable/arrow_up"
         android:layout_marginRight="10dp"
-        />
+     />
     <TextView 
         android:id="@+id/totalVotes"
         android:textSize="14sp"
-        android:layout_toRightOf="@id/vote"
-        android:layout_alignBaseline="@id/vote"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/vote"
+        android:layout_alignBaseline="@id/vote"
         />
     <TextView 
         android:id="@+id/showTitle"
         android:textSize="14sp"
         android:layout_toRightOf="@id/totalVotes"
-        android:layout_alignBaseline="@id/vote"
+        android:layout_alignBaseline="@id/totalVotes"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         />

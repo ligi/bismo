@@ -55,16 +55,16 @@ public class BiSMoApi {
 		}
         String response = client.getResponse();
         
-        if (response != null) {
-        	BiSMoShowParser parser = new BiSMoShowParser();
-            try {
-    			return parser.parse(new JSONObject(response));
-    		} catch (JSONException e) {
-    			// TODO Auto-generated catch block
+        try{
+        	if (!new JSONObject(response).has("error")) {
+            	BiSMoShowParser parser = new BiSMoShowParser();
+        			return parser.parse(new JSONObject(response));
+    		}else{
     			return null;
-    		}
+    		}	
+        }catch (Exception e) {
+			return null;
 		}
-        return null;
 	}
 	
 	public static boolean voteShow(ApplicationController ac,int showId){

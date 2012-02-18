@@ -372,6 +372,7 @@ containing a value of this type.
         public static final int abs__tab_icon=0x7f040013;
         public static final int abs__textButton=0x7f040019;
         public static final int abs__up=0x7f040010;
+        public static final int fragment_container=0x7f04001f;
         public static final int homeAsUp=0x7f040006;
         public static final int listMode=0x7f040002;
         public static final int menu_refresh=0x7f040022;
@@ -379,7 +380,6 @@ containing a value of this type.
         public static final int normal=0x7f040001;
         public static final int showCustom=0x7f040008;
         public static final int showHome=0x7f040005;
-        public static final int showList=0x7f04001f;
         public static final int showTitle=0x7f040007;
         public static final int tabMode=0x7f040003;
         public static final int title=0x7f04001e;

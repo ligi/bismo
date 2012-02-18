@@ -30,7 +30,10 @@ public class BiSMoClientActivity extends Activity {
         Editor editor = prefs.edit();
         editor.putString("uuid", client_id);
         ac.clientId = client_id;
-        
+//        ac.tvId = "8fe695a3f0dd2e5f";
+//        
+//        Intent showList = new Intent(getApplicationContext(), BiSMoShowList.class);
+//		startActivity(showList);
         
         String tvId = null;
         Uri data = getIntent().getData();
