@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.Settings.Secure;
 
@@ -29,7 +30,10 @@ public class BiSMoClientActivity extends Activity {
         Editor editor = prefs.edit();
         editor.putString("uuid", client_id);
         ac.clientId = client_id;
-        
+//        ac.tvId = "8fe695a3f0dd2e5f";
+//        
+//        Intent showList = new Intent(getApplicationContext(), BiSMoShowList.class);
+//		startActivity(showList);
         
         String tvId = null;
         Uri data = getIntent().getData();
@@ -39,15 +43,27 @@ public class BiSMoClientActivity extends Activity {
         	if (tvId != null) {
         		editor.putString("serverId", tvId);
         		ac.tvId = tvId;
-        		
-        		BiSMoApi.registerTv(ac);
-        		
-        		Intent showList = new Intent(getApplicationContext(), BiSMoShowList.class);
-        		startActivity(showList);
+        		new RegisterTask().execute();
     		}
 		}
         
-//        Intent showList = new Intent(getApplicationContext(), BiSMoShowList.class);
-//		startActivity(showList);
+    }
+    
+    
+    private class RegisterTask extends AsyncTask<String, Void, Boolean> {
+		@Override
+		protected Boolean doInBackground(String... params) {
+			// TODO Auto-generated method stub
+			return BiSMoApi.registerTv(ac);
+		}
+		
+		@Override
+		protected void onPostExecute(Boolean result) {
+			// TODO Auto-generated method stub
+			if (result) {
+				Intent showList = new Intent(getApplicationContext(), BiSMoShowList.class);
+	    		startActivity(showList);
+			}
+		}
     }
 }

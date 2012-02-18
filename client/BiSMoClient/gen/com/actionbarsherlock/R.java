@@ -347,8 +347,9 @@ containing a value of this type.
         public static final int abs__tab_unselected_holo=0x7f020026;
         public static final int abs__tab_unselected_pressed_focused_holo=0x7f020027;
         public static final int abs__tab_unselected_pressed_holo=0x7f020028;
-        public static final int ic_launcher=0x7f020029;
-        public static final int menu_refresh=0x7f02002a;
+        public static final int arrow_up=0x7f020029;
+        public static final int ic_launcher=0x7f02002a;
+        public static final int menu_refresh=0x7f02002b;
     }
     public static final class id {
         public static final int abs__action_bar=0x7f04001b;
@@ -371,17 +372,18 @@ containing a value of this type.
         public static final int abs__tab_icon=0x7f040013;
         public static final int abs__textButton=0x7f040019;
         public static final int abs__up=0x7f040010;
+        public static final int fragment_container=0x7f04001f;
         public static final int homeAsUp=0x7f040006;
         public static final int listMode=0x7f040002;
-        public static final int menu_refresh=0x7f040021;
+        public static final int menu_refresh=0x7f040022;
+        public static final int nextShow=0x7f04001d;
         public static final int normal=0x7f040001;
-        public static final int remainingVotes=0x7f04001e;
         public static final int showCustom=0x7f040008;
         public static final int showHome=0x7f040005;
-        public static final int showList=0x7f04001f;
         public static final int showTitle=0x7f040007;
         public static final int tabMode=0x7f040003;
-        public static final int title=0x7f04001d;
+        public static final int title=0x7f04001e;
+        public static final int totalVotes=0x7f040021;
         public static final int useLogo=0x7f040004;
         public static final int vote=0x7f040020;
         public static final int wrap_content=0x7f040000;
