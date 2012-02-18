@@ -1,12 +1,15 @@
 package org.bismo.tv;
 
+import org.json.JSONObject;
+
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.provider.Settings.Secure;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -19,52 +22,12 @@ public class BetweenScreenActivity extends BaseActivity {
 	private long pause_start;
 	private Handler hndl;
 	private TextView next_tv;
-	
-	class Show {
-		private String name;
-		private String intent_action;
-		private String param;
-
-		public Show(String name,String intent_action,String param) {
-			this.name=name;
-			this.intent_action=intent_action;
-			this.param=param;
-		}
-				
-		public String getName(){
-			return name;
-		}
-		
-		public String getIntentAction() {
-			return intent_action;
-		}
-
-		public String getParam() {
-			return param;
-		}
-	}
-	
-	
-	public Show[] shows = new Show[] {
-			new Show("GobanDroid ","org.ligi.gobandroid.NOIF",""),
-			new Show("EyeEmTV","com.eyeem.tv.NOIF",""),
-			new Show("TwitterWall","org.twitterwall.show","")
-	};
-	
-	private int act_show_pos=0;
 	private Show act_show;
 	
 	public void prepare_next() {
-		
-		act_show=shows[act_show_pos];
-		
-		next_tv.setText(act_show.getName());
-		
-		if (act_show_pos<shows.length-1)
-			act_show_pos++;
-		else
-			act_show_pos=0;
-		
+		act_show=shows[0];
+		next_tv.setText("");
+		new CloseVoteTask().execute();
 	}
 	
 	@Override
@@ -74,13 +37,12 @@ public class BetweenScreenActivity extends BaseActivity {
         ImageLoader img_loader= ImageLoader.getInstance();
         img_loader.init(ImageLoaderConfiguration.createDefault(this));
         
-        String device_id=Secure.getString(getApplicationContext().getContentResolver(),Secure.ANDROID_ID);
         
         setContentView(R.layout.main);
         
         ImageView img_v=(ImageView)this.findViewById(R.id.barcode_img);
         
-        img_loader.displayImage("http://chart.apis.google.com/chart?cht=qr&chs=350x350&chld=L&choe=UTF-8&chl=http%3A%2F%2Fbismoapp.appspot.com/tv/"+device_id, img_v);
+        img_loader.displayImage("http://chart.apis.google.com/chart?cht=qr&chs=350x350&chld=L&choe=UTF-8&chl=http%3A%2F%2Fbismoapp.appspot.com/tv/"+getTVID(), img_v);
 
         progress=(ProgressBar)findViewById(R.id.progress_bar);
         progress.setMax(PAUSE_TIME);
@@ -90,7 +52,13 @@ public class BetweenScreenActivity extends BaseActivity {
         hndl=new Handler();
         
         next_tv=(TextView)this.findViewById(R.id.nextshow);
-        
+    
+        TextView avail_tv=(TextView)this.findViewById(R.id.availshows_tv);
+        String avail_txt="Available Shows:";
+        for (Show show:shows)
+        	avail_txt+="\n\t - " +show.getName();
+        		
+        avail_tv.setText(avail_txt);
         prepare_next();
         
         new Thread(new ProgressUpdaterThread()).start();
@@ -113,7 +81,9 @@ public class BetweenScreenActivity extends BaseActivity {
 	}
 	
 	public void startNext() {
-		this.startActivityForResult(new Intent(act_show.getIntentAction()),0);
+		Intent i=new Intent(act_show.getIntentAction());
+		i.putExtra("PARAM", act_show.getParam());
+		this.startActivityForResult(i,0);
 	}
 	
 	class ProgressUpdater implements Runnable {
@@ -123,7 +93,6 @@ public class BetweenScreenActivity extends BaseActivity {
 		}
 	}
 	
-	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
@@ -131,5 +100,37 @@ public class BetweenScreenActivity extends BaseActivity {
 		prepare_next();
 		new Thread(new ProgressUpdaterThread()).start();
 	}
+	
+
+	class CloseVoteTask extends AsyncTask<Void,Void,Show> {
+
+		@Override
+		protected Show doInBackground(Void... params) {
+			try {
+				
+				RestClient rc=new RestClient("https://bismoapp.appspot.com/tv/" + getTVID()+ "/closeVoting");
+				rc.Execute(RestClient.HTTP_POST);
+							
+				
+				JSONObject next_show_json=new JSONObject(rc.getResponse());
+				return new Show(next_show_json.getString("name"),next_show_json.getString("appId"),"");
+	
+			} catch (Exception e) {
+				Log.w("BismoREST"," err"+e);
+			}
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(Show result) {
+			if (result==null)
+				result=shows[0];
+			next_tv.setText(result.getName());
+			act_show=result;
+			super.onPostExecute(result);
+		}
+    
+		
+    }
     
 }

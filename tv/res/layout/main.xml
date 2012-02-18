@@ -9,17 +9,14 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textSize="64sp"
-        android:text="BISMO 0.1" />
+        android:text="BISMO 0.5" />
    
      <TextView
-        android:id="@+id/availshows"
+        android:id="@+id/availshows_tv"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textSize="32sp"
-        android:text="Available shows:\n
-        - TwitterWall\n
-        - Gobandroid\n
-        - EyeEmTV\n"
+        android:textSize="23sp"
+        android:text=""
         android:layout_below="@id/title_tv" />
      
      <TextView
@@ -28,7 +25,7 @@
         android:layout_height="wrap_content"
         android:textSize="32sp"
         android:text="Nex Show:"
-        android:layout_below="@+id/availshows" />
+        android:layout_below="@+id/availshows_tv" />
      
      <TextView
         android:id="@+id/nextshow"
@@ -43,7 +40,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textSize="32sp"
-        android:text="Disclaimer: VERY EARLY ALPHA!\nDO NOT SCAN BARCODE!!\nVOTING NOT WORKING YET!!!"
+        android:text="Disclaimer: EARLY ALPHA!\nfor VOTING - ask for client apks"
         android:layout_below="@id/nextshow" />
           
     <ImageView 
@@ -54,7 +51,6 @@
     	android:paddingRight="20dp"
     	android:paddingTop="20dp"
         />
-
     
     <ProgressBar 
 		android:id="@+id/progress_bar"
