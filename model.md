@@ -21,6 +21,7 @@ shows:
 -------
 * tv id > tv1
 * app id > webview
+* app name
 * show id > www.flickr.com
 * show duration (time in minutes)
 
