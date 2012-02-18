@@ -110,13 +110,17 @@ public class BetweenScreenActivity extends BaseActivity {
 				
 				RestClient rc=new RestClient("https://bismoapp.appspot.com/tv/" + getTVID()+ "/closeVoting");
 				rc.Execute(RestClient.HTTP_POST);
-							
 				
 				JSONObject next_show_json=new JSONObject(rc.getResponse());
-				return new Show(next_show_json.getString("name"),next_show_json.getString("appId"),"");
+				
+				Log.i("BismoREST"," resp next" + rc.getResponse());
+				
+				Show show=new Show(next_show_json.getString("name"),next_show_json.getString("appId"),next_show_json.getString("parameter"));
+				show.setTotalVotes(next_show_json.getInt("totalVotes"));
+				return show;
 	
 			} catch (Exception e) {
-				Log.w("BismoREST"," err"+e);
+				Log.w("BismoREST","  err"+e);
 			}
 			return null;
 		}
@@ -124,8 +128,8 @@ public class BetweenScreenActivity extends BaseActivity {
 		@Override
 		protected void onPostExecute(Show result) {
 			if (result==null)
-				result=shows[0];
-			next_tv.setText(result.getName());
+				result=shows[1];
+			next_tv.setText(result.getName() + "(won with " + result.getTotalVotes() + " Votes for param: " + result.getParam() + ")");
 			act_show=result;
 			super.onPostExecute(result);
 		}

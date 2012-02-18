@@ -284,72 +284,51 @@ containing a value of this type.
  Default height of an action bar. 
          */
         public static final int abs__action_bar_default_height=0x7f090000;
-        /**  Bottom margin for action bar subtitles 
- Bottom margin for action bar subtitles 
- Bottom margin for action bar subtitles 
-         */
-        public static final int abs__action_bar_subtitle_bottom_margin=0x7f090004;
-        /**  Text size for action bar subtitles 
- Text size for action bar subtitles 
- Text size for action bar subtitles 
-         */
-        public static final int abs__action_bar_subtitle_text_size=0x7f090002;
-        /**  Top margin for action bar subtitles 
- Top margin for action bar subtitles 
- Top margin for action bar subtitles 
-         */
-        public static final int abs__action_bar_subtitle_top_margin=0x7f090003;
-        /**  Text size for action bar titles 
- Text size for action bar titles 
- Text size for action bar titles 
-         */
-        public static final int abs__action_bar_title_text_size=0x7f090001;
     }
     public static final class drawable {
-        public static final int abs__ab_solid_dark_holo=0x7f020000;
-        public static final int abs__ab_stacked_transparent_dark_holo=0x7f020001;
-        public static final int abs__ab_stacked_transparent_light_holo=0x7f020002;
-        public static final int abs__action_item_divider=0x7f020003;
-        public static final int abs__cab_background_holo_dark=0x7f020004;
-        public static final int abs__cab_background_holo_light=0x7f020005;
-        public static final int abs__cab_ic_close_focused_holo=0x7f020006;
-        public static final int abs__cab_ic_close_holo=0x7f020007;
-        public static final int abs__cab_ic_close_normal_holo=0x7f020008;
-        public static final int abs__cab_ic_close_pressed_holo=0x7f020009;
-        public static final int abs__ic_ab_back_holo_dark=0x7f02000a;
-        public static final int abs__ic_ab_back_holo_light=0x7f02000b;
-        public static final int abs__item_background_holo_dark=0x7f02000c;
-        public static final int abs__item_background_holo_light=0x7f02000d;
-        public static final int abs__list_focused_holo=0x7f02000e;
-        public static final int abs__list_longpressed_holo=0x7f02000f;
-        public static final int abs__list_pressed_holo_dark=0x7f020010;
-        public static final int abs__list_pressed_holo_light=0x7f020011;
-        public static final int abs__list_selector_background_transition_holo_dark=0x7f020012;
-        public static final int abs__list_selector_background_transition_holo_light=0x7f020013;
-        public static final int abs__list_selector_disabled_holo_dark=0x7f020014;
-        public static final int abs__list_selector_disabled_holo_light=0x7f020015;
-        public static final int abs__spinner_background_holo_dark=0x7f020016;
-        public static final int abs__spinner_background_holo_light=0x7f020017;
-        public static final int abs__spinner_default_holo_dark=0x7f020018;
-        public static final int abs__spinner_default_holo_light=0x7f020019;
-        public static final int abs__spinner_disabled_holo_dark=0x7f02001a;
-        public static final int abs__spinner_disabled_holo_light=0x7f02001b;
-        public static final int abs__spinner_focused_holo_dark=0x7f02001c;
-        public static final int abs__spinner_focused_holo_light=0x7f02001d;
-        public static final int abs__spinner_pressed_holo_dark=0x7f02001e;
-        public static final int abs__spinner_pressed_holo_light=0x7f02001f;
-        public static final int abs__tab_indicator_holo=0x7f020020;
-        public static final int abs__tab_selected_focused_holo=0x7f020021;
-        public static final int abs__tab_selected_holo=0x7f020022;
-        public static final int abs__tab_selected_pressed_focused_holo=0x7f020023;
-        public static final int abs__tab_selected_pressed_holo=0x7f020024;
-        public static final int abs__tab_unselected_focused_holo=0x7f020025;
-        public static final int abs__tab_unselected_holo=0x7f020026;
-        public static final int abs__tab_unselected_pressed_focused_holo=0x7f020027;
-        public static final int abs__tab_unselected_pressed_holo=0x7f020028;
-        public static final int arrow_up=0x7f020029;
-        public static final int ic_launcher=0x7f02002a;
-        public static final int menu_refresh=0x7f02002b;
+        public static final int abs__ab_stacked_transparent_dark_holo=0x7f020000;
+        public static final int abs__ab_stacked_transparent_light_holo=0x7f020001;
+        public static final int abs__action_item_divider=0x7f020002;
+        public static final int abs__cab_background_holo_dark=0x7f020003;
+        public static final int abs__cab_background_holo_light=0x7f020004;
+        public static final int abs__cab_ic_close_focused_holo=0x7f020005;
+        public static final int abs__cab_ic_close_holo=0x7f020006;
+        public static final int abs__cab_ic_close_normal_holo=0x7f020007;
+        public static final int abs__cab_ic_close_pressed_holo=0x7f020008;
+        public static final int abs__ic_ab_back_holo_dark=0x7f020009;
+        public static final int abs__ic_ab_back_holo_light=0x7f02000a;
+        public static final int abs__item_background_holo_dark=0x7f02000b;
+        public static final int abs__item_background_holo_light=0x7f02000c;
+        public static final int abs__list_focused_holo=0x7f02000d;
+        public static final int abs__list_longpressed_holo=0x7f02000e;
+        public static final int abs__list_pressed_holo_dark=0x7f02000f;
+        public static final int abs__list_pressed_holo_light=0x7f020010;
+        public static final int abs__list_selector_background_transition_holo_dark=0x7f020011;
+        public static final int abs__list_selector_background_transition_holo_light=0x7f020012;
+        public static final int abs__list_selector_disabled_holo_dark=0x7f020013;
+        public static final int abs__list_selector_disabled_holo_light=0x7f020014;
+        public static final int abs__spinner_background_holo_dark=0x7f020015;
+        public static final int abs__spinner_background_holo_light=0x7f020016;
+        public static final int abs__spinner_default_holo_dark=0x7f020017;
+        public static final int abs__spinner_default_holo_light=0x7f020018;
+        public static final int abs__spinner_disabled_holo_dark=0x7f020019;
+        public static final int abs__spinner_disabled_holo_light=0x7f02001a;
+        public static final int abs__spinner_focused_holo_dark=0x7f02001b;
+        public static final int abs__spinner_focused_holo_light=0x7f02001c;
+        public static final int abs__spinner_pressed_holo_dark=0x7f02001d;
+        public static final int abs__spinner_pressed_holo_light=0x7f02001e;
+        public static final int abs__tab_indicator_holo=0x7f02001f;
+        public static final int abs__tab_selected_focused_holo=0x7f020020;
+        public static final int abs__tab_selected_holo=0x7f020021;
+        public static final int abs__tab_selected_pressed_focused_holo=0x7f020022;
+        public static final int abs__tab_selected_pressed_holo=0x7f020023;
+        public static final int abs__tab_unselected_focused_holo=0x7f020024;
+        public static final int abs__tab_unselected_holo=0x7f020025;
+        public static final int abs__tab_unselected_pressed_focused_holo=0x7f020026;
+        public static final int abs__tab_unselected_pressed_holo=0x7f020027;
+        public static final int arrow_up=0x7f020028;
+        public static final int ic_launcher=0x7f020029;
+        public static final int menu_refresh=0x7f02002a;
     }
     public static final class id {
         public static final int abs__action_bar=0x7f04001b;
@@ -431,10 +410,6 @@ containing a value of this type.
         public static final int Widget_Sherlock_ActionButton_Overflow=0x7f0a0008;
         public static final int Widget_Sherlock_Light_ActionBar_TabBar=0x7f0a000e;
         public static final int Widget_Sherlock_Light_ActionBar_TabText=0x7f0a0010;
-        /**  Tabs are in AB here, so we need Dark Variant of Theme 
- Tabs are in AB here, so we need Dark Variant of Theme 
-         */
-        public static final int Widget_Sherlock_Light_ActionBar_TabText_Inverse=0x7f0a001e;
         public static final int Widget_Sherlock_Light_ActionBar_TabView=0x7f0a000f;
         public static final int Widget_Sherlock_Light_ActionButton=0x7f0a0011;
         public static final int Widget_Sherlock_Light_ActionButton_CloseMode=0x7f0a0016;
