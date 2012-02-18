@@ -25,6 +25,8 @@ public class GetNextShowTask extends AsyncTask<String, Void, BiSMoShow> {
 	
 	@Override
 	protected void onPostExecute(BiSMoShow result) {
-		mActivity.setNextShowTitle(result.getShowTitle());
+		if (result!=null) {
+			mActivity.setNextShowTitle(result.getShowTitle());
+		}
 	}
 }

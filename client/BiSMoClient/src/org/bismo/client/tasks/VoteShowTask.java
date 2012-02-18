@@ -17,16 +17,16 @@ public class VoteShowTask extends AsyncTask<Integer, Void, Boolean> {
 		}
 		
 		@Override
+		protected Boolean doInBackground(Integer... params) {
+			// TODO Auto-generated method stub
+			return BiSMoApi.voteShow(ac, params[0].intValue());
+		}
+		
+		@Override
 		protected void onPostExecute(Boolean result) {
 			if (result) {
 				GetShowsTask task = new GetShowsTask(mAdapter, ac);
 				task.execute();
 			}
-		}
-
-		@Override
-		protected Boolean doInBackground(Integer... params) {
-			// TODO Auto-generated method stub
-			return BiSMoApi.voteShow(ac, params[0].intValue());
 		}
 	}

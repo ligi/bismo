@@ -82,7 +82,9 @@ public class BiSMoShowList extends  FragmentActivity{
 		
 		@Override
 		protected void onPostExecute(BiSMoShow result) {
-			nextShowTitle.setText("Next Show: "+result.getShowTitle());
+			if (result != null) {
+				nextShowTitle.setText("Next Show: "+result.getShowTitle());
+			}
 		}
 	}
 	
