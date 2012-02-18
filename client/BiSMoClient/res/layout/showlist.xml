@@ -13,18 +13,22 @@
     	
     <TextView 
     	android:id="@+id/nextShow"
-    	android:layout_width="fill_parent"
+    	android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_marginBottom="10dp"
 		android:layout_toRightOf="@id/nextShowIcon"
+		android:paddingTop="10dp"
+		android:textSize="25sp"
         />
     <TextView 
     	android:id="@+id/nextShowTotalVotes"
     	android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_marginBottom="10dp"
-		android:layout_toLeftOf="@id/nextShow"
+		android:textSize="20sp"
 		android:layout_alignParentRight="true"
+		android:paddingRight="40dp"		
+		android:layout_alignBaseline="@id/nextShow"
+		android:textColor="#63CBD7"
         />
     <TextView 
     	android:id="@+id/title"
@@ -34,11 +38,12 @@
 		android:textSize="25sp"
 		android:layout_below="@id/nextShow"
         />
-    
 	<LinearLayout
 	    android:layout_below="@id/title" 
 	    android:layout_width="match_parent"
     	android:layout_height="match_parent"
+    	android:layout_margin="10dp"
+    	android:divider="@null"
     	android:id="@+id/fragment_container">
 	</LinearLayout>
 		

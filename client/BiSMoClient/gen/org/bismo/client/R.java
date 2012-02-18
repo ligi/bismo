@@ -347,14 +347,19 @@ containing a value of this type.
         public static final int abs__tab_unselected_holo=0x7f020026;
         public static final int abs__tab_unselected_pressed_focused_holo=0x7f020027;
         public static final int abs__tab_unselected_pressed_holo=0x7f020028;
-        public static final int icon=0x7f020029;
-        public static final int logo=0x7f02002a;
-        public static final int nowplaying=0x7f02002b;
-        public static final int refresh=0x7f02002c;
-        public static final int start_button=0x7f02002d;
-        public static final int start_button_active=0x7f02002e;
-        public static final int start_button_pressed=0x7f02002f;
-        public static final int upvote=0x7f020030;
+        public static final int arrow_up=0x7f020029;
+        public static final int ic_launcher=0x7f02002a;
+        public static final int icon=0x7f02002b;
+        public static final int logo=0x7f02002c;
+        public static final int menu_refresh=0x7f02002d;
+        public static final int nowplaying=0x7f02002e;
+        public static final int qr_code_logo=0x7f02002f;
+        public static final int refresh=0x7f020030;
+        public static final int start_button=0x7f020031;
+        public static final int start_button_active=0x7f020032;
+        public static final int start_button_active_2=0x7f020033;
+        public static final int start_button_pressed=0x7f020034;
+        public static final int upvote=0x7f020035;
     }
     public static final class id {
         public static final int abs__action_bar=0x7f04001b;

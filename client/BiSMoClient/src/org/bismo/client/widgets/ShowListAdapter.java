@@ -49,7 +49,7 @@ public class ShowListAdapter extends ArrayAdapter<BiSMoShow> {
 		
 		holder.showTitle.setText(mShow.getShowTitle());
 		holder.showDetails.setText(mShow.getShowParam());
-		holder.showTotalVotes.setText("Actual Votes: "+mShow.getTotalVotes());
+		holder.showTotalVotes.setText(""+mShow.getTotalVotes());
 		
 		return rowView;
 	}

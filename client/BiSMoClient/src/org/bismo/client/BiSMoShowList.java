@@ -21,7 +21,7 @@ public class BiSMoShowList extends FragmentActivity{
 	ShowListAdapter mAdapter;
 	ListView showList;
 	public ArrayList<BiSMoShow> mShows;
-	public TextView nextShowTitle;
+	public TextView nextShowTitle,nextShowTotalVotes;
 	public Exception mException=null;;
 	private ShowListFragment listFragment;
 	
@@ -36,22 +36,24 @@ public class BiSMoShowList extends FragmentActivity{
 		ac = (ApplicationController)getApplication();
 		getSupportActionBar().setTitle("BiSMo rocks!!!");
 		nextShowTitle = (TextView)findViewById(R.id.nextShow);
-		
+		nextShowTotalVotes = (TextView)findViewById(R.id.nextShowTotalVotes);
+
 		GetNextShowTask nextShowTask = new GetNextShowTask(ac, this);
 		nextShowTask.execute();
 		
 		listFragment = new ShowListFragment(ac);
 		this.getSupportFragmentManager().beginTransaction().add(R.id.fragment_container,listFragment).commit();
-		
+//		listFragment.getListView().setSelector(null);
 		GetShowsTask task = new GetShowsTask(listFragment, ac);
 		task.execute();
 	}
 	
 	public void setNextShowTitle(BiSMoShow show){
 			if (show!=null) {
-				this.nextShowTitle.setText("Actual show:"+show.getShowTitle()+" with "+show.getTotalVotes()+" total Votes");
+				this.nextShowTitle.setText(show.getShowTitle());
+				this.nextShowTotalVotes.setText(""+show.getTotalVotes());
 			}else{
-				this.nextShowTitle.setText("Vote your fovorite show!");
+				this.nextShowTitle.setText("Vote for your fovorite show!");
 			}
 	}
 	
