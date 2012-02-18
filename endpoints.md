@@ -19,8 +19,10 @@ Client:
 * find available apps for a tv
     * request /tv/{tvId}/apps (GET)
     * JSONObject with an array of apps called "apps"
-* remove vote (step 2)
 * suggest/add a new show for a tv (step 2)
+
+* remove vote (step 2) << vote up/down
+
 
 TV:
 ---
@@ -28,7 +30,7 @@ TV:
     * request: /tv/{tvId} (POST)
     * response: message,tvId
 * add shows to a tv
-    * request: /show (POST) params: tvId, showName, appId, showDuration
+    * request: /show (POST) params: tvId, showName, showParameter, appId, showDuration
     * returns a JSON object of a show
 * close voting
     * request: /tv/{tvId}/closeVoting (POST)
@@ -38,7 +40,6 @@ TV:
     * response: returns a JSON object of the next show
 * add apps to a tv (POST)
     * request: /tv/{tvId}/addApp (POST) params:	appId, appName, requiredParam
-
 * remove shows from a tv
 * remove apps from a tv
 
