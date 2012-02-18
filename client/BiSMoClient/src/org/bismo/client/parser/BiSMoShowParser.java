@@ -1,6 +1,8 @@
 package org.bismo.client.parser;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import org.bismo.client.models.BiSMoShow;
 import org.json.JSONArray;
@@ -22,6 +24,10 @@ public class BiSMoShowParser {
 		
 		if (json.has("name")) {
 			show.setShowTitle(json.getString("name"));
+		}
+		
+		if (json.has("parameter")) {
+			show.setShowParam(json.getString("parameter"));
 		}
 
 		if (json.has("showId")) {
@@ -45,6 +51,9 @@ public class BiSMoShowParser {
 				mShows.add(parse(shows.getJSONObject(i)));
 			}
 		}
+		
+		Collections.sort(mShows);
+		
 		return mShows;
 	}
 }

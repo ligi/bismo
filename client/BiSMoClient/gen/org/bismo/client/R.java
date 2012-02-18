@@ -286,6 +286,7 @@ containing a value of this type.
         public static final int abs__action_bar_default_height=0x7f090000;
     }
     public static final class drawable {
+<<<<<<< HEAD
         public static final int abs__ab_stacked_transparent_dark_holo=0x7f020000;
         public static final int abs__ab_stacked_transparent_light_holo=0x7f020001;
         public static final int abs__action_item_divider=0x7f020002;
@@ -329,6 +330,53 @@ containing a value of this type.
         public static final int arrow_up=0x7f020028;
         public static final int ic_launcher=0x7f020029;
         public static final int menu_refresh=0x7f02002a;
+=======
+        public static final int abs__ab_solid_dark_holo=0x7f020000;
+        public static final int abs__ab_stacked_transparent_dark_holo=0x7f020001;
+        public static final int abs__ab_stacked_transparent_light_holo=0x7f020002;
+        public static final int abs__action_item_divider=0x7f020003;
+        public static final int abs__cab_background_holo_dark=0x7f020004;
+        public static final int abs__cab_background_holo_light=0x7f020005;
+        public static final int abs__cab_ic_close_focused_holo=0x7f020006;
+        public static final int abs__cab_ic_close_holo=0x7f020007;
+        public static final int abs__cab_ic_close_normal_holo=0x7f020008;
+        public static final int abs__cab_ic_close_pressed_holo=0x7f020009;
+        public static final int abs__ic_ab_back_holo_dark=0x7f02000a;
+        public static final int abs__ic_ab_back_holo_light=0x7f02000b;
+        public static final int abs__item_background_holo_dark=0x7f02000c;
+        public static final int abs__item_background_holo_light=0x7f02000d;
+        public static final int abs__list_focused_holo=0x7f02000e;
+        public static final int abs__list_longpressed_holo=0x7f02000f;
+        public static final int abs__list_pressed_holo_dark=0x7f020010;
+        public static final int abs__list_pressed_holo_light=0x7f020011;
+        public static final int abs__list_selector_background_transition_holo_dark=0x7f020012;
+        public static final int abs__list_selector_background_transition_holo_light=0x7f020013;
+        public static final int abs__list_selector_disabled_holo_dark=0x7f020014;
+        public static final int abs__list_selector_disabled_holo_light=0x7f020015;
+        public static final int abs__spinner_background_holo_dark=0x7f020016;
+        public static final int abs__spinner_background_holo_light=0x7f020017;
+        public static final int abs__spinner_default_holo_dark=0x7f020018;
+        public static final int abs__spinner_default_holo_light=0x7f020019;
+        public static final int abs__spinner_disabled_holo_dark=0x7f02001a;
+        public static final int abs__spinner_disabled_holo_light=0x7f02001b;
+        public static final int abs__spinner_focused_holo_dark=0x7f02001c;
+        public static final int abs__spinner_focused_holo_light=0x7f02001d;
+        public static final int abs__spinner_pressed_holo_dark=0x7f02001e;
+        public static final int abs__spinner_pressed_holo_light=0x7f02001f;
+        public static final int abs__tab_indicator_holo=0x7f020020;
+        public static final int abs__tab_selected_focused_holo=0x7f020021;
+        public static final int abs__tab_selected_holo=0x7f020022;
+        public static final int abs__tab_selected_pressed_focused_holo=0x7f020023;
+        public static final int abs__tab_selected_pressed_holo=0x7f020024;
+        public static final int abs__tab_unselected_focused_holo=0x7f020025;
+        public static final int abs__tab_unselected_holo=0x7f020026;
+        public static final int abs__tab_unselected_pressed_focused_holo=0x7f020027;
+        public static final int abs__tab_unselected_pressed_holo=0x7f020028;
+        public static final int arrow_up=0x7f020029;
+        public static final int ic_launcher=0x7f02002a;
+        public static final int menu_refresh=0x7f02002b;
+        public static final int qr_code_logo=0x7f02002c;
+>>>>>>> 414b4e71f4b8ba9b69d15680ff5aed1531a12676
     }
     public static final class id {
         public static final int abs__action_bar=0x7f04001b;
@@ -351,20 +399,23 @@ containing a value of this type.
         public static final int abs__tab_icon=0x7f040013;
         public static final int abs__textButton=0x7f040019;
         public static final int abs__up=0x7f040010;
-        public static final int fragment_container=0x7f04001f;
+        public static final int fragment_container=0x7f040021;
         public static final int homeAsUp=0x7f040006;
         public static final int listMode=0x7f040002;
-        public static final int menu_refresh=0x7f040022;
-        public static final int nextShow=0x7f04001d;
+        public static final int menu_refresh=0x7f040025;
+        public static final int nextShow=0x7f04001f;
         public static final int normal=0x7f040001;
+        public static final int openQRCode=0x7f04001e;
         public static final int showCustom=0x7f040008;
+        public static final int showDetail=0x7f040024;
         public static final int showHome=0x7f040005;
         public static final int showTitle=0x7f040007;
         public static final int tabMode=0x7f040003;
-        public static final int title=0x7f04001e;
-        public static final int totalVotes=0x7f040021;
+        public static final int title=0x7f040020;
+        public static final int totalVotes=0x7f040023;
+        public static final int useExistingTV=0x7f04001d;
         public static final int useLogo=0x7f040004;
-        public static final int vote=0x7f040020;
+        public static final int vote=0x7f040022;
         public static final int wrap_content=0x7f040000;
     }
     public static final class integer {

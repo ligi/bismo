@@ -1,11 +1,13 @@
 package org.bismo.client.api;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 import org.bismo.client.ApplicationController;
 import org.bismo.client.http.RestClient;
 import org.bismo.client.models.BiSMoShow;
 import org.bismo.client.parser.BiSMoShowParser;
+import org.bismo.client.util.BismoHelper;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -18,8 +20,10 @@ public class BiSMoApi {
 	public static final String URL_VOTE = "vote/";
 	public static final String URL_SHOW = "show/";
 	public static final String URL_SHOWS = "shows";
+	public static final String URL_ADD_SHOW = "show";
 	public static final String URL_CLIENT = "client/";
 	public static final String URL_NEXT_SHOW = "nextShow";
+	
 	
 	public static boolean registerTv(ApplicationController ac){
 		RestClient client = new RestClient(URL_BASIC+URL_TV+ac.tvId+"/"+URL_CLIENT+ac.clientId);
@@ -67,28 +71,28 @@ public class BiSMoApi {
 		}
 	}
 	
-	public static boolean voteShow(ApplicationController ac,int showId){
+	public static ArrayList<BiSMoShow> voteShow(ApplicationController ac,int showId){
+		ArrayList<BiSMoShow> shows = null;
+		
 		RestClient client = new RestClient(URL_BASIC+URL_SHOW+showId+"/"+URL_CLIENT+ac.clientId);
 		client.AddHeader("client_id", ac.clientId);
-		 try {
-				client.Execute(RestClient.HTTP_POST);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	        String response = client.getResponse();
+		try {
+			client.Execute(RestClient.HTTP_POST);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	    String response = client.getResponse();
+	    
+	    
+	    BiSMoShowParser parser = new BiSMoShowParser();
+	    try {
+	    	shows = parser.parseShows(new JSONObject(response));
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	        
-	        JSONObject obj;
-			try {
-				obj = new JSONObject(response);
-				if (obj.get("message").equals("Vote registered")) {
-					return true;
-				}
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				return false;
-			}
-			return false;
+	    return shows;
 	}
 	
 	public static ArrayList<BiSMoShow> getShows(ApplicationController ac){
@@ -115,6 +119,54 @@ public class BiSMoApi {
 		return shows;
 	}
 	
+	
+	public static BiSMoShow addShow(ApplicationController ac, String url){
+		RestClient client = new RestClient(URL_BASIC+URL_ADD_SHOW);
+		client.AddHeader("client_id", ac.clientId);
+		client.AddParam("tvId", ac.getLastKnownTVId());
+		client.AddParam("showDuration", "10");
+		
+		if(url.toLowerCase().endsWith(".3gp") || url.toLowerCase().endsWith(".mp4") || url.toLowerCase().endsWith(".avi") || url.toLowerCase().endsWith(".mkv")){
+			client.AddParam("showName", "VideoPlayer");
+			client.AddParam("showParameter",url);
+			client.AddParam("appId", "org.apache.android.media.show");
+		}else if(url.toLowerCase().contains("http://www.eyeem.com/s/")){
+			//appIdEyeEm VibePlayer
+			//EyeEm albumId
+			client.AddParam("showName", "EyeEmTV");
+			client.AddParam("appId", "com.eyeem.tv.NOIF");
+			client.AddParam("showParameter", BismoHelper.retrieveLinks(url).get(0));
+			
+			
+		}else if(url.toLowerCase().endsWith(".sgf")){
+			//Gobandroid
+			client.AddParam("appId", "org.ligi.gobandroid.NOIF");
+			client.AddParam("showName", "GobanDroid");
+			client.AddParam("showParameter",url);
+		}else if(url.contains("twitter")){
+			client.AddParam("showName", "TwitterWall");
+			client.AddParam("appId", "org.twitterwall.show");
+		}else{
+			return null;
+		}
+		
+		try {
+			client.Execute(RestClient.HTTP_POST);
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String response = client.getResponse();
+        BiSMoShowParser parser = new BiSMoShowParser();
+        try {
+        	return parser.parse(new JSONObject(response));
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+		
+	}
 	
 
 }
