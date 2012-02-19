@@ -21,7 +21,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textSize="64sp"
-        android:text="BISMO 0.7abcd" />
+        android:text="BISMO 0.9beta1" />
      
      </LinearLayout>
      
@@ -57,7 +57,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textSize="32sp"
-        android:text="Disclaimer: ALPHA!\nfor VOTING - ask for client apks - but also soon released to U"
+        android:text="Disclaimer: Beta - Expect Bugs!"
         android:layout_below="@id/nextshow" />
           
       <LinearLayout 
@@ -75,7 +75,8 @@
         />
     
     <TextView 
-        android:text="Scan to Vote! ( when it is ready somewhen today until then http://goo.gl/dYnQu )"
+        android:id="@+id/coach_barcode_tv"
+        android:text="@string/scan_to_vote"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         

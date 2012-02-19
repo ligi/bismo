@@ -25,6 +25,7 @@ public class BetweenScreenActivity extends BaseActivity {
 	private TextView next_tv;
 	private Show act_show;
 	public ImageLoader img_loader;
+	TextView coach_barcode_tv;
 	
 	public void prepare_next() {
 		act_show=shows[0];
@@ -59,6 +60,10 @@ public class BetweenScreenActivity extends BaseActivity {
         
         next_tv=(TextView)this.findViewById(R.id.nextshow);
     
+        coach_barcode_tv=(TextView)this.findViewById(R.id.coach_barcode_tv);
+        
+        
+        
         TextView avail_tv=(TextView)this.findViewById(R.id.availshows_tv);
         String avail_txt="Available Shows:";
         for (Show show:shows)
@@ -69,6 +74,20 @@ public class BetweenScreenActivity extends BaseActivity {
         
         new Thread(new ProgressUpdaterThread()).start();
 	}
+
+	
+	
+	@Override
+	protected void onResume() {
+		
+		super.onResume();
+        ImageView img_v=(ImageView)this.findViewById(R.id.barcode_img);
+        img_loader.displayImage("http://chart.apis.google.com/chart?cht=qr&chs=350x350&chld=L&choe=UTF-8&chl=http%3A%2F%2Fbismoapp.appspot.com/tv/"+getTVID(), img_v);
+        
+        coach_barcode_tv.setText(R.string.scan_to_vote);
+	}
+
+
 
 	class ProgressUpdaterThread implements Runnable {
 		
@@ -142,6 +161,7 @@ public class BetweenScreenActivity extends BaseActivity {
 	        if (act_show.getIntentAction().contains("hackatron")) {
 	        	ImageView img_v_ht=(ImageView)BetweenScreenActivity.this.findViewById(R.id.barcode_img);
 	        	BetweenScreenActivity.this.img_loader.displayImage("http://chart.apis.google.com/chart?cht=qr&chs=350x350&chld=L&choe=UTF-8&chl=http%3A%2F%2Fhackatronapp.appspot.com?ip=84.22.107.42", img_v_ht);
+	        	coach_barcode_tv.setText("Scan Barcode to easy participate in Hack-a-tron - give IP to GTV");                      
 	        } 
 					
 			super.onPostExecute(result);
