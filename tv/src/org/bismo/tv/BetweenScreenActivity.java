@@ -23,6 +23,7 @@ public class BetweenScreenActivity extends BaseActivity {
 	private Handler hndl;
 	private TextView next_tv;
 	private Show act_show;
+	public ImageLoader img_loader;
 	
 	public void prepare_next() {
 		act_show=shows[0];
@@ -34,16 +35,18 @@ public class BetweenScreenActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        ImageLoader img_loader= ImageLoader.getInstance();
+        img_loader= ImageLoader.getInstance();
         img_loader.init(ImageLoaderConfiguration.createDefault(this));
         
         
         setContentView(R.layout.main);
         
         ImageView img_v=(ImageView)this.findViewById(R.id.barcode_img);
+
         
         img_loader.displayImage("http://chart.apis.google.com/chart?cht=qr&chs=350x350&chld=L&choe=UTF-8&chl=http%3A%2F%2Fbismoapp.appspot.com/tv/"+getTVID(), img_v);
 
+        
         progress=(ProgressBar)findViewById(R.id.progress_bar);
         progress.setMax(PAUSE_TIME);
         
@@ -131,6 +134,13 @@ public class BetweenScreenActivity extends BaseActivity {
 				result=shows[1];
 			next_tv.setText(result.getName() + "(won with " + result.getTotalVotes() + " Votes for param: " + result.getParam() + ")");
 			act_show=result;
+			
+/*
+	        if (act_show.getIntentAction().contains("hackatron")) {
+	        	ImageView img_v_ht=(ImageView)BetweenScreenActivity.this.findViewById(R.id.barcode_img);
+	        	BetweenScreenActivity.this.img_loader.displayImage("http://chart.apis.google.com/chart?cht=qr&chs=350x350&chld=L&choe=UTF-8&chl=http%3A%2F%2Fhackatronclient.appspot.com/84.22.107.42", img_v_ht);
+	        } */
+					
 			super.onPostExecute(result);
 		}
     

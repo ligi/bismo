@@ -9,7 +9,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textSize="64sp"
-        android:text="BISMO 0.6" />
+        android:text="BISMO 0.7abcd" />
    
      <TextView
         android:id="@+id/availshows_tv"
@@ -24,8 +24,9 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textSize="32sp"
-        android:text="Nex Show:"
-        android:layout_below="@+id/availshows_tv" />
+        android:text="Next Show:"
+        android:layout_below="@+id/availshows_tv"
+        />
      
      <TextView
         android:id="@+id/nextshow"
@@ -34,24 +35,39 @@
         android:textSize="32sp"
         android:paddingLeft="128dp"
         android:text="Gobandroid"
-        android:layout_below="@+id/nextshow_title" />
+        android:layout_below="@+id/nextshow_title"
+         />
+    
      
      <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textSize="32sp"
-        android:text="Disclaimer: EARLY ALPHA!\nfor VOTING - ask for client apks"
+        android:text="Disclaimer: ALPHA!\nfor VOTING - ask for client apks - but also soon released to U"
         android:layout_below="@id/nextshow" />
           
+      <LinearLayout 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentRight="true">
+        
     <ImageView 
 		android:id="@+id/barcode_img"
         android:layout_width="@dimen/barcode_size"
         android:layout_height="@dimen/barcode_size"
-    	android:layout_alignParentRight="true"
     	android:paddingRight="20dp"
     	android:paddingTop="20dp"
         />
     
+    <TextView 
+        android:text="Scan to Vote! ( when it is ready somewhen today)"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        
+        />
+     
+     </LinearLayout>
     <ProgressBar 
 		android:id="@+id/progress_bar"
 		style="?android:attr/progressBarStyleHorizontal"

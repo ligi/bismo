@@ -10,6 +10,9 @@ public class BaseActivity extends Activity {
 			
 			new Show("TwitterWall","org.twitterwall.show","#gadc")
 			,new Show("Dev Camp Blog","org.NOIF.webview","http://android-dev-camp-2012.blogspot.com/")
+			
+			,new Show("Hackatron","org.cbase.hackatron.NOIF","")
+			
 			,new Show("EyeEmTV","com.eyeem.tv.NOIF","120557")
 			,new Show("VideoPlayer ","org.apache.android.media.show","http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")
 			
