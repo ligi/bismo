@@ -135,11 +135,11 @@ public class BetweenScreenActivity extends BaseActivity {
 			next_tv.setText(result.getName() + "(won with " + result.getTotalVotes() + " Votes for param: " + result.getParam() + ")");
 			act_show=result;
 			
-/*
+
 	        if (act_show.getIntentAction().contains("hackatron")) {
 	        	ImageView img_v_ht=(ImageView)BetweenScreenActivity.this.findViewById(R.id.barcode_img);
-	        	BetweenScreenActivity.this.img_loader.displayImage("http://chart.apis.google.com/chart?cht=qr&chs=350x350&chld=L&choe=UTF-8&chl=http%3A%2F%2Fhackatronclient.appspot.com/84.22.107.42", img_v_ht);
-	        } */
+	        	BetweenScreenActivity.this.img_loader.displayImage("http://chart.apis.google.com/chart?cht=qr&chs=350x350&chld=L&choe=UTF-8&chl=http%3A%2F%2Fhackatronapp.appspot.com?ip=84.22.107.42", img_v_ht);
+	        } 
 					
 			super.onPostExecute(result);
 		}

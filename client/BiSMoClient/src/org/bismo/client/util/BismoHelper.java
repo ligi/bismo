@@ -5,15 +5,17 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class BismoHelper {
+	
+	public static final int QR_CODE_RESULT = 1;
+	
 	public static ArrayList<String> retrieveLinks(String text) {
-        ArrayList<String> links = new ArrayList();
+        ArrayList<String> links = new ArrayList<String>();
 
         String regex = "\\(?\\b(http://|www[.])[-A-Za-z0-9+&@#/%?=~_()|!:,.;]*[-A-Za-z0-9+&@#/%=~_()|]";
         Pattern p = Pattern.compile(regex);
         Matcher m = p.matcher(text);
         while(m.find()) {
         String urlStr = m.group();
-        char[] stringArray1 = urlStr.toCharArray();
 
         if (urlStr.startsWith("(") && urlStr.endsWith(")"))
         {

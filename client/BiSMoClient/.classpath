@@ -6,5 +6,9 @@
 	<classpathentry kind="lib" path="libs/httpmime-4.0.1.jar"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
+<<<<<<< HEAD
+=======
+	<classpathentry kind="src" path="/com_actionbarsherlock"/>
+>>>>>>> 7d7cd75a3d40cab4fd0fb8ca751b75c7640b0401
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

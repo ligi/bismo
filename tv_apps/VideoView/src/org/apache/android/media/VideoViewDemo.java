@@ -25,8 +25,13 @@ import java.net.URL;
 import java.net.URLConnection;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.media.MediaPlayer;
+<<<<<<< HEAD
 import android.os.AsyncTask;
+=======
+import android.net.Uri;
+>>>>>>> 7d7cd75a3d40cab4fd0fb8ca751b75c7640b0401
 import android.os.Bundle;
 import android.util.Log;
 import android.webkit.URLUtil;
@@ -42,6 +47,10 @@ public class VideoViewDemo extends Activity {
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 		setContentView(R.layout.main);
+
+//		Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:hnOPu0_YWhw")); startActivityForResult(i,0);
+		Intent lVideoIntent = new Intent(null, Uri.parse("ytv://KCUFxFoaloE"), this, IntroVideoActivity.class);
+		startActivity(lVideoIntent);		
 		mVideoView = (MyVideoView) findViewById(R.id.surface_view);
 		mVideoView.mDisplay = getWindowManager().getDefaultDisplay();
 		

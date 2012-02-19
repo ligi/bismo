@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <ImageView 
+    	android:id="@+id/logo"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/logo" />
+   <Button 
+        android:id="@+id/openQRCode"
+        android:layout_height="52dp"
+        android:layout_width="204dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="60dp"
+        android:background ="@drawable/start_button"
+        android:textColor="#ffffff"
+        android:text="Scan"        
+        android:onClick="onClick"
+	/>  
+   <Button 
+        android:id="@+id/useExistingTV"
+        android:layout_height="52dp"
+        android:layout_width="204dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Use last known GoogleTV"
+        android:background="@drawable/start_button"
+        android:layout_marginBottom="40dp"    
+        android:layout_above="@id/openQRCode"   
+        android:onClick="onClick"
+        android:textColor="#ffffff"  
+        android:visibility="invisible"      
+	/>	      
+    <TextView
+     	android:id="@+id/introText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/useExistingTV"
+        android:layout_marginBottom="30dp"
+        android:layout_margin="25dp"
+        android:textSize="28dp"
+        android:text="Scan the BiSMo QR-Code from a Google TV to vote for your favorite show!" />        
+ 
+    
+</RelativeLayout>
