@@ -18,6 +18,13 @@ public class GetNextShowTask extends AsyncTask<String, Void, BiSMoShow> {
 		this.ac = ac;
 	}
 	
+	
+	@Override
+	protected void onPreExecute() {
+		// TODO Auto-generated method stub
+		super.onPreExecute();
+	}
+	
 	@Override
 	protected BiSMoShow doInBackground(String... params) {
 		// TODO Auto-generated method stub

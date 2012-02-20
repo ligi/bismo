@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="gen"/>
+<<<<<<< HEAD
+	<classpathentry combineaccessrules="false" kind="src" path="/ActionBar"/>
+=======
+>>>>>>> d2cec5c507def410e889875dfd69ee64d089d28f
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

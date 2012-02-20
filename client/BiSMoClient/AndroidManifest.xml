@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.bismo.client"
-    android:versionCode="1"
-    android:versionName="1.0"> 
+    android:versionCode="2"
+    android:versionName="1.1"> 
+    <uses-sdk android:minSdkVersion="8" />
     <application
         android:icon="@drawable/icon"
         android:label="@string/app_name" 
-        android:name=".ApplicationController">
+        android:name=".ApplicationController"
+        android:debuggable="false">
         <activity
             android:name=".BiSMoClientActivity"
             android:label="@string/app_name" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar"
