@@ -8,6 +8,9 @@
 package org.bismo.client;
 
 public final class R {
+    public static final class anim {
+        public static final int hyperspace_jump=0x7f040000;
+    }
     public static final class attr {
         /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
@@ -268,13 +271,13 @@ containing a value of this type.
          flag. This may be set to false for situations where space is
          extremely limited. 
          */
-        public static final int abs__config_allowActionMenuItemTextWithIcon=0x7f050000;
+        public static final int abs__config_allowActionMenuItemTextWithIcon=0x7f060000;
     }
     public static final class color {
-        public static final int abs__item_bg=0x7f060001;
-        public static final int abs__item_focused=0x7f060000;
-        public static final int abs__tab_text_color_dark=0x7f060002;
-        public static final int abs__tab_text_color_light=0x7f060003;
+        public static final int abs__item_bg=0x7f070001;
+        public static final int abs__item_focused=0x7f070000;
+        public static final int abs__tab_text_color_dark=0x7f070002;
+        public static final int abs__tab_text_color_light=0x7f070003;
     }
     public static final class dimen {
         /**  Default height of an action bar. 
@@ -283,27 +286,27 @@ containing a value of this type.
  Default height of an action bar. 
  Default height of an action bar. 
          */
-        public static final int abs__action_bar_default_height=0x7f090000;
+        public static final int abs__action_bar_default_height=0x7f0a0000;
         /**  Bottom margin for action bar subtitles 
  Bottom margin for action bar subtitles 
  Bottom margin for action bar subtitles 
          */
-        public static final int abs__action_bar_subtitle_bottom_margin=0x7f090004;
+        public static final int abs__action_bar_subtitle_bottom_margin=0x7f0a0004;
         /**  Text size for action bar subtitles 
  Text size for action bar subtitles 
  Text size for action bar subtitles 
          */
-        public static final int abs__action_bar_subtitle_text_size=0x7f090002;
+        public static final int abs__action_bar_subtitle_text_size=0x7f0a0002;
         /**  Top margin for action bar subtitles 
  Top margin for action bar subtitles 
  Top margin for action bar subtitles 
          */
-        public static final int abs__action_bar_subtitle_top_margin=0x7f090003;
+        public static final int abs__action_bar_subtitle_top_margin=0x7f0a0003;
         /**  Text size for action bar titles 
  Text size for action bar titles 
  Text size for action bar titles 
          */
-        public static final int abs__action_bar_title_text_size=0x7f090001;
+        public static final int abs__action_bar_title_text_size=0x7f0a0001;
     }
     public static final class drawable {
         public static final int abs__ab_solid_dark_holo=0x7f020000;
@@ -352,61 +355,66 @@ containing a value of this type.
         public static final int icon=0x7f02002b;
         public static final int logo=0x7f02002c;
         public static final int menu_refresh=0x7f02002d;
-        public static final int nowplaying=0x7f02002e;
-        public static final int qr_code_logo=0x7f02002f;
-        public static final int refresh=0x7f020030;
-        public static final int start_button=0x7f020031;
-        public static final int start_button_active=0x7f020032;
-        public static final int start_button_active_2=0x7f020033;
-        public static final int start_button_pressed=0x7f020034;
-        public static final int upvote=0x7f020035;
+        public static final int new_state=0x7f02002e;
+        public static final int nowplaying=0x7f02002f;
+        public static final int original_state=0x7f020030;
+        public static final int qr_code_logo=0x7f020031;
+        public static final int refresh=0x7f020032;
+        public static final int start_button=0x7f020033;
+        public static final int start_button_active=0x7f020034;
+        public static final int start_button_active_2=0x7f020035;
+        public static final int start_button_pressed=0x7f020036;
+        public static final int translate=0x7f020037;
+        public static final int upvote=0x7f020038;
     }
     public static final class id {
-        public static final int abs__action_bar=0x7f04001b;
-        public static final int abs__action_bar_container=0x7f04001a;
-        public static final int abs__action_bar_subtitle=0x7f040017;
-        public static final int abs__action_bar_title=0x7f040016;
-        public static final int abs__action_menu_presenter=0x7f040009;
-        public static final int abs__actions=0x7f04000b;
-        public static final int abs__content=0x7f04001c;
-        public static final int abs__custom=0x7f04000e;
-        public static final int abs__home=0x7f040011;
-        public static final int abs__home_wrapper=0x7f04000a;
-        public static final int abs__imageButton=0x7f040018;
-        public static final int abs__iprogress=0x7f04000c;
-        public static final int abs__nav_list=0x7f04000d;
-        public static final int abs__nav_tabs=0x7f04000f;
-        public static final int abs__nav_tabs_layout=0x7f040012;
-        public static final int abs__tab=0x7f040014;
-        public static final int abs__tab_custom=0x7f040015;
-        public static final int abs__tab_icon=0x7f040013;
-        public static final int abs__textButton=0x7f040019;
-        public static final int abs__up=0x7f040010;
-        public static final int fragment_container=0x7f040025;
-        public static final int homeAsUp=0x7f040006;
-        public static final int introText=0x7f040020;
-        public static final int listMode=0x7f040002;
-        public static final int logo=0x7f04001d;
-        public static final int menu_refresh=0x7f040029;
-        public static final int nextShow=0x7f040022;
-        public static final int nextShowIcon=0x7f040021;
-        public static final int nextShowTotalVotes=0x7f040023;
-        public static final int normal=0x7f040001;
-        public static final int openQRCode=0x7f04001e;
-        public static final int showCustom=0x7f040008;
-        public static final int showDetail=0x7f040027;
-        public static final int showHome=0x7f040005;
-        public static final int showTitle=0x7f040007;
-        public static final int tabMode=0x7f040003;
-        public static final int title=0x7f040024;
-        public static final int totalVotes=0x7f040028;
-        public static final int useExistingTV=0x7f04001f;
-        public static final int useLogo=0x7f040004;
-        public static final int vote=0x7f040026;
-        public static final int wrap_content=0x7f040000;
+        public static final int abs__action_bar=0x7f05001b;
+        public static final int abs__action_bar_container=0x7f05001a;
+        public static final int abs__action_bar_subtitle=0x7f050017;
+        public static final int abs__action_bar_title=0x7f050016;
+        public static final int abs__action_menu_presenter=0x7f050009;
+        public static final int abs__actions=0x7f05000b;
+        public static final int abs__content=0x7f05001c;
+        public static final int abs__custom=0x7f05000e;
+        public static final int abs__home=0x7f050011;
+        public static final int abs__home_wrapper=0x7f05000a;
+        public static final int abs__imageButton=0x7f050018;
+        public static final int abs__iprogress=0x7f05000c;
+        public static final int abs__nav_list=0x7f05000d;
+        public static final int abs__nav_tabs=0x7f05000f;
+        public static final int abs__nav_tabs_layout=0x7f050012;
+        public static final int abs__tab=0x7f050014;
+        public static final int abs__tab_custom=0x7f050015;
+        public static final int abs__tab_icon=0x7f050013;
+        public static final int abs__textButton=0x7f050019;
+        public static final int abs__up=0x7f050010;
+        public static final int actionbar_spinner=0x7f05001d;
+        public static final int adapter_layout=0x7f050027;
+        public static final int fragment_container=0x7f050026;
+        public static final int homeAsUp=0x7f050006;
+        public static final int introText=0x7f050021;
+        public static final int listMode=0x7f050002;
+        public static final int logo=0x7f05001e;
+        public static final int menu_refresh=0x7f05002b;
+        public static final int nextShow=0x7f050023;
+        public static final int nextShowIcon=0x7f050022;
+        public static final int nextShowTotalVotes=0x7f050024;
+        public static final int normal=0x7f050001;
+        public static final int openQRCode=0x7f05001f;
+        public static final int showCustom=0x7f050008;
+        public static final int showDetail=0x7f050029;
+        public static final int showHome=0x7f050005;
+        public static final int showTitle=0x7f050007;
+        public static final int tabMode=0x7f050003;
+        public static final int title=0x7f050025;
+        public static final int totalVotes=0x7f05002a;
+        public static final int useExistingTV=0x7f050020;
+        public static final int useLogo=0x7f050004;
+        public static final int vote=0x7f050028;
+        public static final int wrap_content=0x7f050000;
     }
     public static final class integer {
-        public static final int abs__max_action_buttons=0x7f070000;
+        public static final int abs__max_action_buttons=0x7f080000;
     }
     public static final class layout {
         public static final int abs__action_bar=0x7f030000;
@@ -420,53 +428,54 @@ containing a value of this type.
         public static final int abs__screen_action_bar_overlay=0x7f030008;
         public static final int abs__screen_simple=0x7f030009;
         public static final int abs__simple_spinner_item=0x7f03000a;
-        public static final int main=0x7f03000b;
-        public static final int showlist=0x7f03000c;
-        public static final int showlistadapter=0x7f03000d;
+        public static final int action_progress=0x7f03000b;
+        public static final int main=0x7f03000c;
+        public static final int showlist=0x7f03000d;
+        public static final int showlistadapter=0x7f03000e;
     }
     public static final class menu {
-        public static final int show_menu=0x7f0b0000;
+        public static final int show_menu=0x7f0c0000;
     }
     public static final class string {
-        public static final int abs__tab_under_ab_tag=0x7f080000;
-        public static final int app_name=0x7f080002;
-        public static final int hello=0x7f080001;
+        public static final int abs__tab_under_ab_tag=0x7f090000;
+        public static final int app_name=0x7f090002;
+        public static final int hello=0x7f090001;
     }
     public static final class style {
-        public static final int Internal_Widget_Sherlock_ActionBar=0x7f0a001c;
-        public static final int Internal_Widget_Sherlock_Light_ActionBar=0x7f0a001d;
-        public static final int TextAppearance_Widget_Subtitle=0x7f0a001b;
-        public static final int TextAppearance_Widget_Title=0x7f0a001a;
-        public static final int Theme_Sherlock=0x7f0a0000;
-        public static final int Theme_Sherlock_Light=0x7f0a000d;
-        public static final int Widget_Sherlock_ActionBar_TabBar=0x7f0a0001;
-        public static final int Widget_Sherlock_ActionBar_TabText=0x7f0a0003;
-        public static final int Widget_Sherlock_ActionBar_TabView=0x7f0a0002;
-        public static final int Widget_Sherlock_ActionButton=0x7f0a0004;
-        public static final int Widget_Sherlock_ActionButton_CloseMode=0x7f0a0006;
-        public static final int Widget_Sherlock_ActionButton_Home=0x7f0a0007;
-        public static final int Widget_Sherlock_ActionButton_Overflow=0x7f0a0008;
-        public static final int Widget_Sherlock_Light_ActionBar_TabBar=0x7f0a000e;
-        public static final int Widget_Sherlock_Light_ActionBar_TabText=0x7f0a0010;
+        public static final int Internal_Widget_Sherlock_ActionBar=0x7f0b001c;
+        public static final int Internal_Widget_Sherlock_Light_ActionBar=0x7f0b001d;
+        public static final int TextAppearance_Widget_Subtitle=0x7f0b001b;
+        public static final int TextAppearance_Widget_Title=0x7f0b001a;
+        public static final int Theme_Sherlock=0x7f0b0000;
+        public static final int Theme_Sherlock_Light=0x7f0b000d;
+        public static final int Widget_Sherlock_ActionBar_TabBar=0x7f0b0001;
+        public static final int Widget_Sherlock_ActionBar_TabText=0x7f0b0003;
+        public static final int Widget_Sherlock_ActionBar_TabView=0x7f0b0002;
+        public static final int Widget_Sherlock_ActionButton=0x7f0b0004;
+        public static final int Widget_Sherlock_ActionButton_CloseMode=0x7f0b0006;
+        public static final int Widget_Sherlock_ActionButton_Home=0x7f0b0007;
+        public static final int Widget_Sherlock_ActionButton_Overflow=0x7f0b0008;
+        public static final int Widget_Sherlock_Light_ActionBar_TabBar=0x7f0b000e;
+        public static final int Widget_Sherlock_Light_ActionBar_TabText=0x7f0b0010;
         /**  Tabs are in AB here, so we need Dark Variant of Theme 
  Tabs are in AB here, so we need Dark Variant of Theme 
          */
-        public static final int Widget_Sherlock_Light_ActionBar_TabText_Inverse=0x7f0a001e;
-        public static final int Widget_Sherlock_Light_ActionBar_TabView=0x7f0a000f;
-        public static final int Widget_Sherlock_Light_ActionButton=0x7f0a0011;
-        public static final int Widget_Sherlock_Light_ActionButton_CloseMode=0x7f0a0016;
-        public static final int Widget_Sherlock_Light_ActionButton_Home=0x7f0a0012;
-        public static final int Widget_Sherlock_Light_ActionButton_Overflow=0x7f0a0013;
-        public static final int Widget_Sherlock_Light_ListPopupWindow=0x7f0a0018;
-        public static final int Widget_Sherlock_Light_ListView_DropDown=0x7f0a0017;
-        public static final int Widget_Sherlock_Light_PopupMenu=0x7f0a0019;
-        public static final int Widget_Sherlock_Light_Spinner=0x7f0a0015;
-        public static final int Widget_Sherlock_Light_TextView_SpinnerItem_ActionBar=0x7f0a0014;
-        public static final int Widget_Sherlock_ListPopupWindow=0x7f0a000a;
-        public static final int Widget_Sherlock_ListView_DropDown=0x7f0a000b;
-        public static final int Widget_Sherlock_PopupMenu=0x7f0a000c;
-        public static final int Widget_Sherlock_Spinner=0x7f0a0005;
-        public static final int Widget_Sherlock_TextView_SpinnerItem_ActionBar=0x7f0a0009;
+        public static final int Widget_Sherlock_Light_ActionBar_TabText_Inverse=0x7f0b001e;
+        public static final int Widget_Sherlock_Light_ActionBar_TabView=0x7f0b000f;
+        public static final int Widget_Sherlock_Light_ActionButton=0x7f0b0011;
+        public static final int Widget_Sherlock_Light_ActionButton_CloseMode=0x7f0b0016;
+        public static final int Widget_Sherlock_Light_ActionButton_Home=0x7f0b0012;
+        public static final int Widget_Sherlock_Light_ActionButton_Overflow=0x7f0b0013;
+        public static final int Widget_Sherlock_Light_ListPopupWindow=0x7f0b0018;
+        public static final int Widget_Sherlock_Light_ListView_DropDown=0x7f0b0017;
+        public static final int Widget_Sherlock_Light_PopupMenu=0x7f0b0019;
+        public static final int Widget_Sherlock_Light_Spinner=0x7f0b0015;
+        public static final int Widget_Sherlock_Light_TextView_SpinnerItem_ActionBar=0x7f0b0014;
+        public static final int Widget_Sherlock_ListPopupWindow=0x7f0b000a;
+        public static final int Widget_Sherlock_ListView_DropDown=0x7f0b000b;
+        public static final int Widget_Sherlock_PopupMenu=0x7f0b000c;
+        public static final int Widget_Sherlock_Spinner=0x7f0b0005;
+        public static final int Widget_Sherlock_TextView_SpinnerItem_ActionBar=0x7f0b0009;
     }
     public static final class styleable {
         /** Attributes that can be used with a SherlockTheme.

@@ -8,9 +8,11 @@ import org.bismo.client.tasks.GetShowsTask;
 import org.bismo.client.widgets.ShowListAdapter;
 import org.bismo.client.widgets.ShowListFragment;
 
+import android.app.ProgressDialog;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.Menu;
 import android.support.v4.view.MenuItem;
 import android.view.MenuInflater;
 import android.widget.ListView;
@@ -24,7 +26,7 @@ public class BiSMoShowList extends FragmentActivity{
 	public TextView nextShowTitle,nextShowTotalVotes;
 	public Exception mException=null;;
 	private ShowListFragment listFragment;
-	
+	public ProgressDialog progress; 
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +40,14 @@ public class BiSMoShowList extends FragmentActivity{
 		nextShowTitle = (TextView)findViewById(R.id.nextShow);
 		nextShowTotalVotes = (TextView)findViewById(R.id.nextShowTotalVotes);
 
+		progress = new ProgressDialog(this);
+		
 		GetNextShowTask nextShowTask = new GetNextShowTask(ac, this);
 		nextShowTask.execute();
 		
-		listFragment = new ShowListFragment(ac);
+		listFragment = new ShowListFragment(ac,this);
+		
 		this.getSupportFragmentManager().beginTransaction().add(R.id.fragment_container,listFragment).commit();
-//		listFragment.getListView().setSelector(null);
 		GetShowsTask task = new GetShowsTask(listFragment, ac);
 		task.execute();
 	}
@@ -63,6 +67,15 @@ public class BiSMoShowList extends FragmentActivity{
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.show_menu, menu);
 		return true;
+	}
+	
+	@Override
+	public boolean onPrepareOptionsMenu(Menu menu) {
+	    super.onPrepareOptionsMenu(menu);
+	    
+//	    RelativeLayout progressLayout =(RelativeLayout)menu.getItem(1); 
+//	    progress = (ProgressBar)progressLayout.getChildAt(0); 
+	    return true;
 	}
 	
 	@Override
