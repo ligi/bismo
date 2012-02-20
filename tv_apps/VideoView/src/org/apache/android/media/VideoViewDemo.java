@@ -27,7 +27,11 @@ import java.net.URLConnection;
 import android.app.Activity;
 import android.content.Intent;
 import android.media.MediaPlayer;
+<<<<<<< HEAD
+import android.os.AsyncTask;
+=======
 import android.net.Uri;
+>>>>>>> 7d7cd75a3d40cab4fd0fb8ca751b75c7640b0401
 import android.os.Bundle;
 import android.util.Log;
 import android.webkit.URLUtil;
@@ -37,7 +41,8 @@ public class VideoViewDemo extends Activity {
 	private static final String TAG = "VideoViewDemo";
 
 	private MyVideoView mVideoView;
-
+	String url;
+	
 	@Override
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
@@ -58,25 +63,55 @@ public class VideoViewDemo extends Activity {
 			}
 		});
 		
-		String url = null;
+		mVideoView.setOnErrorListener(new MediaPlayer.OnErrorListener() {
+			
+			@Override
+			public boolean onError(MediaPlayer mp, int what, int extra) {
+				setResult(RESULT_CANCELED);
+				finish();
+				return false;
+			}
+		});
+		
+		url = null;
 		
 		Bundle extras = getIntent().getExtras();
-		if (extras!=null) {
-			url = getIntent().getExtras().getString("PARAM");
-			playVideo(url);
+		if ((extras!=null)&&(!extras.getString("PARAM").equals(""))) {
+			url = extras.getString("PARAM");
+			//playVideo(url);
 		}else{
 			url = "http://daily3gp.com/vids/747.3gp";
-			playVideo(url);
+			//playVideo(url);
 		}
 
+	//	new LoadVideoAsyncTask().execute(url);
 	}
 
+	
+	@Override
+	protected void onResume() {
+		playVideo(url);
+		super.onResume();
+	}
+
+
+	class LoadVideoAsyncTask extends AsyncTask<String,Void,String> {
+
+		@Override
+		protected String doInBackground(String... params) {
+			playVideo(params[0]);
+
+			return null;
+		}
+		
+	}
+	
 	private void playVideo(String url) {
 		try {
 			if (url == null || url.length() == 0) {
 				Toast.makeText(VideoViewDemo.this, "File URL/path is empty",
 						Toast.LENGTH_LONG).show();
-
+ 
 			} else {
 				mVideoView.setVideoPath(getDataSource(url));
 				mVideoView.start();

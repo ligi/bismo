@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
-	<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
-	<classpathentry kind="lib" path="libs/apache-mime4j-0.6.jar"/>
-	<classpathentry kind="lib" path="libs/httpmime-4.0.1.jar"/>
-	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
+<<<<<<< HEAD
 	<classpathentry combineaccessrules="false" kind="src" path="/ActionBar"/>
+=======
+>>>>>>> d2cec5c507def410e889875dfd69ee64d089d28f
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

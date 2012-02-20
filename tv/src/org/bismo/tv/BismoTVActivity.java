@@ -42,7 +42,6 @@ public class BismoTVActivity extends BaseActivity {
 				RestClient rc=new RestClient("https://bismoapp.appspot.com/tv/"+getTVID());
 				rc.Execute(RestClient.HTTP_POST);
 				Log.i("BismoREST" , " reg response " + rc.getResponse());
-
 				
 				
 				//new JSONObject (RESTHelper.doREST("https://bismoapp.appspot.com/show?tvId=" + getTVID() + "&showName=foo&appId=bar&showDuration=10",RESTHelper.METHOD_POST ));
@@ -65,6 +64,7 @@ public class BismoTVActivity extends BaseActivity {
 						rc.AddParam("showName",s.getName());
 						rc.AddParam("appId",s.getIntentAction());
 						rc.AddParam("showDuration","10");
+						rc.AddParam("showParameter",s.getParam());
 						rc.Execute(RestClient.HTTP_POST);
 						Log.i("BismoREST" , " add response " + rc.getResponse());
 					}
