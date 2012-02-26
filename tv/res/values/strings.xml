@@ -2,5 +2,5 @@
 <resources>
     <string name="hello">Hello World, BismoTVActivity!</string>
     <string name="app_name">BismoTV</string>
-    <string name="scan_to_vote">Scan to Vote!</string>
+    <string name="scan_to_vote">Scan to Interact!</string>
 </resources>

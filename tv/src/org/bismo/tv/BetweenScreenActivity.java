@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -74,8 +75,6 @@ public class BetweenScreenActivity extends BaseActivity {
         
         new Thread(new ProgressUpdaterThread()).start();
 	}
-
-	
 	
 	@Override
 	protected void onResume() {
@@ -87,12 +86,11 @@ public class BetweenScreenActivity extends BaseActivity {
         coach_barcode_tv.setText(R.string.scan_to_vote);
 	}
 
-
-
 	class ProgressUpdaterThread implements Runnable {
 		
 		@Override
 		public void run() {
+			Looper.prepare();
 			while ((System.currentTimeMillis()-pause_start)<PAUSE_TIME) {
 				try {
 					Thread.sleep(10);
@@ -105,10 +103,22 @@ public class BetweenScreenActivity extends BaseActivity {
 		
 	}
 	
-	public void startNext() {
-		Intent i=new Intent(act_show.getIntentAction());
-		i.putExtra("PARAM", act_show.getParam());
-		this.startActivityForResult(i,0);
+	public void startNext() { 
+		try {
+			Intent i=new Intent(act_show.getIntentAction());
+			i.putExtra("PARAM", act_show.getParam());
+			this.startActivityForResult(i,0);
+		} catch (Exception e) {
+			pause_start=System.currentTimeMillis();
+			new Handler().post(new Runnable() {
+
+				@Override
+				public void run() {
+					 prepare_next();
+				} });
+
+			new Thread(new ProgressUpdaterThread()).start();
+		}
 	}
 	
 	class ProgressUpdater implements Runnable {
@@ -154,7 +164,10 @@ public class BetweenScreenActivity extends BaseActivity {
 		protected void onPostExecute(Show result) {
 			if (result==null)
 				result=shows[1];
-			next_tv.setText(result.getName() + "(won with " + result.getTotalVotes() + " Votes for param: " + result.getParam() + ")");
+			if (result.getTotalVotes()==0)
+				next_tv.setText(result.getName() + "(selected by Random -param: " + result.getParam() + ") ");
+			else
+				next_tv.setText(result.getName() + "(selected by " + result.getTotalVotes() + " Voters -param: " + result.getParam() + ") ");
 			act_show=result;
 			
 
