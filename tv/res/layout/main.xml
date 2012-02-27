@@ -4,11 +4,19 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
     
+        <LinearLayout
+
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+        
+
     <LinearLayout
     	android:id="@+id/logo_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        >
+        android:orientation="vertical" 
+        android:padding="12px" >
 	<ImageView
    		android:src="@drawable/bismo_logo"
    	
@@ -20,43 +28,56 @@
         android:id="@+id/title_tv"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textSize="64sp"
-        android:text="BISMO 0.9beta1" />
+        android:textSize="21sp"
+        android:text="0.9b1" />
+     
      
      </LinearLayout>
      
-     <TextView
-        android:id="@+id/availshows_tv"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textSize="23sp"
-        android:text=""
-        android:layout_below="@+id/logo_container" />
-     
+    
      <TextView
         android:id="@+id/nextshow_title"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="32sp"
+        android:paddingLeft="20px"
         android:text="Next Show:"
+        android:textStyle="bold"
+        android:textColor="#ff2b87a3"
         android:layout_below="@+id/availshows_tv"
         />
-     
-     <TextView
+      <TextView
         android:id="@+id/nextshow"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="32sp"
-        android:paddingLeft="128dp"
         android:text="Gobandroid"
         android:layout_below="@+id/nextshow_title"
          />
-    
-      <LinearLayout 
+      </LinearLayout>
+       <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentLeft="true"
+          android:layout_alignParentBottom="true"
+          android:paddingBottom="42dp" >
+     <TextView
+        android:id="@+id/availshows_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_alignParentRight="true">
+        android:textSize="23sp"
+        android:text="test"
+        />
+     </LinearLayout>
+     
+      <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+	    android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+    
+          android:orientation="vertical"
+          android:paddingBottom="42dp" >
         
     <ImageView 
 		android:id="@+id/barcode_img"

@@ -167,7 +167,7 @@ public class BetweenScreenActivity extends BaseActivity {
 			if (result.getTotalVotes()==0)
 				next_tv.setText(result.getName() + "(selected by Random -param: " + result.getParam() + ") ");
 			else
-				next_tv.setText(result.getName() + "(selected by " + result.getTotalVotes() + " Voters -param: " + result.getParam() + ") ");
+				next_tv.setText(result.getName() + "(selected by " + result.getTotalVotes() + " Votes -param: " + result.getParam() + ") ");
 			act_show=result;
 			
 
