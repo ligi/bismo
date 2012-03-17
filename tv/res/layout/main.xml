@@ -40,8 +40,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="32sp"
-        android:paddingLeft="20px"
-        android:text="Next Show:"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="Next:"
         android:textStyle="bold"
         android:textColor="#ff2b87a3"
         android:layout_below="@+id/availshows_tv"
@@ -66,6 +67,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="23sp"
+        android:paddingLeft="10dp"
         android:text="test"
         />
      </LinearLayout>
@@ -90,6 +92,8 @@
     <TextView 
         android:id="@+id/coach_barcode_tv"
         android:text="@string/scan_to_vote"
+		android:textSize="23sp"
+
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         
