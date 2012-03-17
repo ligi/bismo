@@ -1,1 +1,7 @@
 .DS_Store
+client/BiSMoClient/bin/*
+client/BiSMoClient/gen/*
+client/BiSMoClient/.classpath
+client/BiSMoClient/.project
+client/BiSMoClient/.default.properties
+client/BiSMoClient/.project.properties
