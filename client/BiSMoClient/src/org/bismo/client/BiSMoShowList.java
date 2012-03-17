@@ -36,7 +36,7 @@ public class BiSMoShowList extends FragmentActivity{
 		
 		setContentView(R.layout.showlist);
 		ac = (ApplicationController)getApplication();
-		getSupportActionBar().setTitle("BiSMo rocks!!!");
+		getSupportActionBar().setTitle("Vote now!");
 		nextShowTitle = (TextView)findViewById(R.id.nextShow);
 		nextShowTotalVotes = (TextView)findViewById(R.id.nextShowTotalVotes);
 
