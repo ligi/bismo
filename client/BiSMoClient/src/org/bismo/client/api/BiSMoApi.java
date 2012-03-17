@@ -11,7 +11,7 @@ import org.json.JSONObject;
 
 public class BiSMoApi {
 	
-	public static final String URL_BASIC = "http://bismoapp.appspot.com/";
+	public static final String URL_BASIC = "http://bismobackend.appspot.com/";
 	public static final String URL_TV = "tv/";
 	public static final String URL_VOTE = "vote/";
 	public static final String URL_SHOW = "show/";
