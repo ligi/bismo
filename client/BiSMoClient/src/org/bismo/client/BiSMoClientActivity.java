@@ -53,8 +53,8 @@ public class BiSMoClientActivity extends Activity {
 		 if (data != null) {
 		 intentConent = data.toString();
 		 
-		 	if (intentConent.contains("http://bismoapp.appspot.com/tv/")) {
-		 		intentConent = intentConent.replace("http://bismoapp.appspot.com/tv/", "");
+		 	if (intentConent.contains(BiSMoApi.URL_BASIC+"tv/")) {
+		 		intentConent = intentConent.replace(BiSMoApi.URL_BASIC+"tv/", "");
 		 		if (intentConent != null) {
 		 			editor.putString("tvId", intentConent).commit();
 		 			ac.tvId = intentConent;
@@ -90,14 +90,13 @@ public class BiSMoClientActivity extends Activity {
 
 	private void analyseIntent(Intent intent) {
 		SharedPreferences prefs = getSharedPreferences("bismo", MODE_PRIVATE);
-		Editor editor = prefs.edit();
-		
+		Editor editor = prefs.edit();		
 		Uri data = Uri.parse(intent.getStringExtra("SCAN_RESULT"));
 		
-		if (data == null || (!data.toString().contains("http://bismoapp.appspot.com/tv/"))) {
+		if (data == null || (!data.toString().contains(BiSMoApi.URL_BASIC+"tv/"))) {
 			Toast.makeText(getApplicationContext(), "Sorry, but we couldn't use your QR-Code. Watch out for more plugins!", Toast.LENGTH_LONG).show();	
 		}else{
-			String intentConent = data.toString().replace("http://bismoapp.appspot.com/tv/", "");
+			String intentConent = data.toString().replace(BiSMoApi.URL_BASIC+"tv/", "");
         	if (intentConent != null) {
         		editor.putString("tvId", intentConent).commit();
         		ac.tvId = intentConent;
