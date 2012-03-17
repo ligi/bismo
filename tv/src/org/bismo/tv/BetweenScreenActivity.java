@@ -1,5 +1,8 @@
 package org.bismo.tv;
 
+import java.net.URL;
+import java.net.URLEncoder;
+
 import org.json.JSONObject;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -18,7 +21,7 @@ import android.widget.TextView;
 
 public class BetweenScreenActivity extends BaseActivity {
     
-	public final static int PAUSE_TIME=30000; // in ms
+	public final static int PAUSE_TIME=12000; // in ms
 	
 	private ProgressBar progress;
 	private long pause_start;
@@ -31,12 +34,15 @@ public class BetweenScreenActivity extends BaseActivity {
 	public void prepare_next() {
 		act_show=shows[0];
 		next_tv.setText("");
+		//new RegisterAtServerTask(this).execute(); //workaround until server is fixed
 		new CloseVoteTask().execute();
 	}
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        
         
     	getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     	
@@ -49,7 +55,7 @@ public class BetweenScreenActivity extends BaseActivity {
         ImageView img_v=(ImageView)this.findViewById(R.id.barcode_img);
 
         
-        img_loader.displayImage("http://chart.apis.google.com/chart?cht=qr&chs=350x350&chld=L&choe=UTF-8&chl=http%3A%2F%2Fbismoapp.appspot.com/tv/"+getTVID(), img_v);
+        img_loader.displayImage("http://chart.apis.google.com/chart?cht=qr&chs=350x350&chld=L&choe=UTF-8&chl=" +  URLEncoder.encode(BismoConfig.HTTP_SERVER_URL)+"/tv/"+getTVID(), img_v);
 
         
         progress=(ProgressBar)findViewById(R.id.progress_bar);
@@ -80,9 +86,9 @@ public class BetweenScreenActivity extends BaseActivity {
 	protected void onResume() {
 		
 		super.onResume();
+		
         ImageView img_v=(ImageView)this.findViewById(R.id.barcode_img);
-        img_loader.displayImage("http://chart.apis.google.com/chart?cht=qr&chs=350x350&chld=L&choe=UTF-8&chl=http%3A%2F%2Fbismoapp.appspot.com/tv/"+getTVID(), img_v);
-        
+        img_loader.displayImage("http://chart.apis.google.com/chart?cht=qr&chs=350x350&chld=L&choe=UTF-8&chl=" +  URLEncoder.encode(BismoConfig.HTTP_SERVER_URL)+"/tv/"+getTVID(), img_v);
         coach_barcode_tv.setText(R.string.scan_to_vote);
 	}
 
@@ -143,7 +149,8 @@ public class BetweenScreenActivity extends BaseActivity {
 		protected Show doInBackground(Void... params) {
 			try {
 				
-				RestClient rc=new RestClient("https://bismoapp.appspot.com/tv/" + getTVID()+ "/closeVoting");
+				RestClient rc=new RestClient(BismoConfig.SERVER_URL+"/tv/" + getTVID()+ "/closeVoting");
+				Log.i("BisMo"," close voting " + BismoConfig.SERVER_URL+"/tv/" + getTVID()+ "/closeVoting");
 				rc.Execute(RestClient.HTTP_POST);
 				
 				JSONObject next_show_json=new JSONObject(rc.getResponse());
@@ -165,9 +172,9 @@ public class BetweenScreenActivity extends BaseActivity {
 			if (result==null)
 				result=shows[1];
 			if (result.getTotalVotes()==0)
-				next_tv.setText(result.getName() + "(selected by Random -param: " + result.getParam() + ") ");
+				next_tv.setText(result.getName());
 			else
-				next_tv.setText(result.getName() + "(selected by " + result.getTotalVotes() + " Votes -param: " + result.getParam() + ") ");
+				next_tv.setText(result.getName() + "("+ result.getTotalVotes() + " Votes) ");
 			act_show=result;
 			
 
