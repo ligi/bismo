@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.bismo.client"
-    android:versionCode="2"
-    android:versionName="1.1"> 
+    android:versionCode="4"
+    android:versionName="1.4"> 
     <uses-sdk android:minSdkVersion="8" />
     <application
         android:icon="@drawable/icon"
@@ -17,12 +17,23 @@
                 <action android:name="android.intent.action.VIEW"></action>
 				<category android:name="android.intent.category.DEFAULT"></category>
 				<category android:name="android.intent.category.BROWSABLE"></category>
-				<data android:host="bismoapp.appspot.com" android:scheme="http"></data>
+				<data android:host="bismobackend.appspot.com" android:scheme="http"></data>
 			</intent-filter>
+			
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"></action>
+				<category android:name="android.intent.category.DEFAULT"></category>
+				<category android:name="android.intent.category.BROWSABLE"></category>
+				<data android:host="bismobackend.appspot.com" android:scheme="https"></data>
+			</intent-filter>
+			
+            
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+                
             </intent-filter>
+            
            <intent-filter>
             	<action android:name="android.intent.action.SEND" />
             	<category android:name="android.intent.category.DEFAULT" />
