@@ -214,7 +214,7 @@ public class RestClient {
 				try {
 					paramString+=URLEncoder.encode(p.getValue(), "UTF-8");
 				} catch (UnsupportedEncodingException e) {
-					paramString+=URLEncoder.encode(p.getValue());
+
 				}
 				
 				if (combinedParams.length() > 1) {
