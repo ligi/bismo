@@ -1,6 +1,5 @@
 package org.bismo.tv;
 
-import java.net.URL;
 import java.net.URLEncoder;
 
 import org.json.JSONObject;
@@ -21,7 +20,7 @@ import android.widget.TextView;
 
 public class BetweenScreenActivity extends BaseActivity {
     
-	public final static int PAUSE_TIME=12000; // in ms
+	public final static int PAUSE_TIME=42000; // in ms
 	
 	private ProgressBar progress;
 	private long pause_start;
@@ -68,8 +67,6 @@ public class BetweenScreenActivity extends BaseActivity {
         next_tv=(TextView)this.findViewById(R.id.nextshow);
     
         coach_barcode_tv=(TextView)this.findViewById(R.id.coach_barcode_tv);
-        
-        
         
         TextView avail_tv=(TextView)this.findViewById(R.id.availshows_tv);
         String avail_txt="Available Shows:";
