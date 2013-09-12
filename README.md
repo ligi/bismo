@@ -1,3 +1,5 @@
+[![Build Status](https://ligi.ci.cloudbees.com/buildStatus/icon?job=bismo)](https://ligi.ci.cloudbees.com/job/bismo/)
+
 What it is in a single sentence
 ===============================
 

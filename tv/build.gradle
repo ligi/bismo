@@ -1,0 +1,26 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.5.+'
+    }
+}
+
+apply plugin: 'android'
+
+repositories {
+    mavenCentral()
+    maven {
+        url project.hasProperty('ligisMavenUrl') ? ligisMavenUrl : "https://raw.github.com/ligi/ligis-mvn-repo/master";
+    }}
+
+
+android {
+    compileSdkVersion 18
+    buildToolsVersion "18.0.1"
+
+    dependencies {
+        compile 'com.nostra13.universalimageloader:universal-image-loader:1.8.6'
+    }
+}
