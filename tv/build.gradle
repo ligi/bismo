@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.6.+'
+        classpath 'com.android.tools.build:gradle:0.8.+'
     }
 }
 
@@ -17,10 +17,14 @@ repositories {
 
 
 android {
-    compileSdkVersion 18
-    buildToolsVersion "18.1"
+    compileSdkVersion 19
+    buildToolsVersion "19.0.1"
 
     dependencies {
         compile 'com.nostra13.universalimageloader:universal-image-loader:1.8.6'
     }
+ 
+   lintOptions {
+          abortOnError false
+   }
 }
